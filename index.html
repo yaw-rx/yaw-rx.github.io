@@ -1,0 +1,493 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>globalThis.__yaw_hydrate=true;</script>
+    <meta charset="UTF-8">
+    <title>YAW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <style>html, body { margin: 0; background: #000; }</style>
+  <script type="module" crossorigin="" src="/assets/index-CnOCKmfx.js"></script>
+  <link rel="modulepreload" crossorigin="" href="/assets/rx-element-4ZUxoBWu.js">
+  <link rel="modulepreload" crossorigin="" href="/assets/injectable-D92TCiPx.js">
+  <link rel="modulepreload" crossorigin="" href="/assets/toc-menu.service-CWF5-U3_.js">
+<link rel="modulepreload" as="script" crossorigin="" href="/assets/manifesto-page-BfdSm0gB.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/code-block.component-SfvraQFF.js"><style id="yaw-ssg-styles">nav-bar nav { position: fixed; top: 0px; left: 0px; right: 0px; z-index: 300; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); border-bottom: var(--border-width) solid var(--bg-6); }
+nav-bar .logo { font-weight: 900; font-size: 1.4rem; color: var(--white); text-decoration: none; letter-spacing: -1px; margin-right: 2rem; position: relative; cursor: default; -webkit-tap-highlight-color: transparent; }
+nav-bar .logo.has-menu { cursor: pointer; }
+nav-bar .logo.has-funnel::after { content: ""; position: absolute; bottom: -7px; left: 0px; width: 100%; height: 8px; background: linear-gradient(var(--text), var(--text)) center 0    / 70% 1px no-repeat,
+                       linear-gradient(var(--text), var(--text)) center 50%  / 50% 1px no-repeat,
+                       linear-gradient(var(--text), var(--text)) center 100% / 30% 1px no-repeat; opacity: 0; transition: opacity 0.8s, background 0.3s; }
+nav-bar .logo.has-funnel.funnel-visible::after { opacity: 0.7; }
+nav-bar .logo.funnel-visible .logo-text { mask-image: linear-gradient(-75deg, var(--black) 30%, rgba(0,0,0,.6) 50%, var(--black) 70%); mask-size: 200%; animation: 2s ease 0s 1 normal forwards running shine; }
+@-webkit-keyframes shine { 
+  0% { mask-position: 150% center; }
+  100% { mask-position: -50% center; }
+}
+nav-bar .logo.menu-open::after { opacity: 1; background: linear-gradient(var(--accent), var(--accent)) center 0    / 70% 1px no-repeat,
+                       linear-gradient(var(--accent), var(--accent)) center 50%  / 50% 1px no-repeat,
+                       linear-gradient(var(--accent), var(--accent)) center 100% / 30% 1px no-repeat; }
+nav-bar .links { display: flex; gap: 2rem; overflow-x: auto; scrollbar-width: none; }
+nav-bar .links::-webkit-scrollbar { display: none; }
+nav-bar .links a { color: var(--secondary); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; cursor: pointer; transition: color 0.2s; white-space: nowrap; position: relative; -webkit-tap-highlight-color: transparent; }
+nav-bar .links a:hover { color: var(--white); }
+nav-bar .links a.active { color: var(--white); }
+nav-bar .links a.active::after { content: ""; position: absolute; left: 0px; right: 0px; bottom: -4px; height: 2px; background: var(--white); }
+@media (max-width: 768px) {
+  nav-bar nav { padding: 0.75rem 1rem; }
+  nav-bar .logo { margin-right: 1rem; }
+  nav-bar .links { gap: 1rem; }
+}
+@media (max-width: 480px) {
+  nav-bar nav { padding: 0.75rem 0.5rem 0.75rem 0.75rem; }
+  nav-bar .logo { margin-right: 0.75rem; font-size: 1.2rem; }
+  nav-bar .links { gap: 0.75rem; }
+  nav-bar .links a { font-size: 0.75rem; letter-spacing: 0px; }
+}
+app-root { display: block; }
+:root { --black: #000; --bg-1: #050505; --bg-2: #0a0a0a; --bg-3: #111; --bg-4: #151515; --bg-5: #1a1a1a; --bg-6: #222; --bg-7: #242424; --border: #333; --border-light: #444; --dim: #808080; --slate: #828790; --muted: #9a9a9a; --muted-alt: #a5a5a5; --secondary: #c0c0c0; --subtle: #d1d1d1; --text: #e5e5e5; --text-light: #f5f5f5; --white: #fff; --accent: #8af; --navy: #1a2352; --green: #4f4; --red: #f44; --blue: #44f; --amber: #fa4; --gold: #ffcb6b; --salmon: #f78c6c; --font-mono: monospace; --tracking: 0.08em; --radius-sm: 4px; --radius: 6px; --radius-lg: 8px; --border-width: 1px; }
+html { font-size: 100%; }
+html, body { margin: 0px; background: var(--black); color: var(--text); }
+*, ::before, ::after { box-sizing: border-box; }
+button, rx-button { user-select: none; cursor: pointer; transition: transform 0.1s, filter 0.1s; }
+button:active, rx-button:active { transform: scale(0.96); filter: brightness(1.3); }
+code-block { display: flex; min-height: 0px; }
+code-block .cb { background: rgba(255, 255, 255, 0.04); border: var(--border-width) solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg); padding: 1.25rem; overflow-x: auto; margin: 0px; backdrop-filter: blur(4px); flex: 1 1 0%; box-sizing: border-box; min-width: 0px; }
+code-block code { font-family: "Fira Code", "Cascadia Code", monospace; font-size: 0.8rem; color: rgb(221, 221, 221); line-height: 1.55; white-space: pre; background: none; }
+code-block .tk-keyword { color: rgb(199, 146, 234); }
+code-block .tk-string { color: rgb(195, 232, 141); }
+code-block .tk-number { color: var(--salmon); }
+code-block .tk-comment { color: rgb(106, 138, 153); font-style: italic; }
+code-block .tk-regex { color: rgb(255, 83, 112); }
+code-block .tk-decorator { color: var(--gold); }
+code-block .tk-type { color: var(--gold); }
+code-block .tk-fn { color: rgb(130, 170, 255); }
+code-block .tk-const { color: var(--salmon); }
+code-block .tk-ident { color: rgb(238, 255, 255); }
+code-block .tk-tag { color: rgb(240, 113, 120); }
+code-block .tk-attr { color: var(--gold); }
+code-block .tk-punct { color: rgb(137, 221, 255); }
+hero-section { min-height: calc(57.1429vh); display: flex; align-items: center; justify-content: center; background: var(--black); padding: 6rem 2rem 4rem; position: relative; overflow: hidden; }
+hero-section .noise { position: absolute; inset: 0px; z-index: 0; pointer-events: none; }
+hero-section .hero { position: relative; z-index: 1; max-width: 800px; text-align: center; }
+hero-section .title { font-size: clamp(3rem, 10vw, 7rem); font-weight: 900; color: var(--white); letter-spacing: -4px; line-height: 1; margin: 0px 0px 0.5rem; }
+hero-section .sub { font-size: 1.25rem; color: rgb(131, 131, 131); line-height: 1.6; margin: 0px 0px 4rem; }
+hero-section .stats { display: flex; gap: 1.5rem; justify-content: center; }
+@media (max-width: 480px) {
+  hero-section .stats { gap: 1.5rem; }
+}
+stat-counter { display: block; }
+stat-counter .stat { text-align: center; }
+stat-counter .value { display: block; font-size: 3.5rem; font-weight: 900; color: var(--white); letter-spacing: -2px; line-height: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+stat-counter .digits { display: inline-block; text-align: right; min-width: var(--dw); }
+stat-counter .unit { font-size: 0.75rem; font-weight: 600; color: var(--muted-alt); letter-spacing: 0.02em; margin-left: 0.4em; }
+stat-counter .label { display: block; font-size: 0.75rem; color: var(--muted-alt); font-family: var(--font-mono); margin-top: 0.5rem; font-weight: 600; letter-spacing: 0.04em; word-spacing: -0.35em; }
+@media (max-width: 480px) {
+  stat-counter .value { font-size: 2.5rem; }
+  stat-counter .label { font-size: 0.65rem; }
+}
+manifesto-section { display: block; max-width: 720px; margin: 0px auto; padding: 2rem; border-top: var(--border-width) solid var(--bg-6); }
+manifesto-section .heading { font-size: 2rem; font-weight: 900; color: var(--white); letter-spacing: -1px; margin: 0px 0px 1.5rem; }
+manifesto-section .body { color: var(--secondary); line-height: 1.8; font-size: 1.05rem; }
+manifesto-section .body p { margin: 0px 0px 1rem; }
+manifesto-section .body p:last-child { margin-bottom: 0px; }
+manifesto-section .body .closer { color: var(--text); font-weight: 900; font-size: 1.15rem; }
+manifesto-section .body code { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); }
+manifesto-section .body .model { display: block; border-left: 2px solid var(--border); padding-left: 1rem; margin: 0px 0px 1rem; color: var(--subtle); font-size: 1.15rem; font-style: italic; }
+manifesto-section .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+manifesto-section .revealed { opacity: 1; transform: none; }
+@media (max-width: 480px) {
+  manifesto-section { padding: 3rem 1rem; }
+  manifesto-section .heading { font-size: 1.5rem; }
+}
+footer-section { display: block; border-top: var(--border-width) solid var(--bg-3); padding: 4rem 2rem; text-align: center; background: var(--black); }
+footer-section footer { max-width: 720px; margin: 0px auto; }
+footer-section .size { font-size: 1.5rem; color: var(--white); margin: 0px 0px 0.5rem; }
+footer-section .size strong { color: rgb(74, 222, 128); }
+footer-section .compare { color: var(--dim); margin: 0px 0px 2rem; }
+footer-section .copy { color: var(--bg-7); font-size: 0.8rem; }
+manifesto-page { display: block; background: var(--black); min-height: 100vh; }
+manifesto-page .sections { padding: 2rem 0px 0px; }
+manifesto-page code-block { margin: 1rem 0px; }</style><script type="application/json" id="yaw-ssg-state">{"components":{"0":{"route":"/"},"1":{"count":"0","label":"bundle","unit":"KB","target":"16"},"2":{"count":"0","label":"node_modules","unit":"MB","target":"9"},"3":{"count":"0","label":"dependency","unit":"","target":"1"},"4":{"count":"0","label":"virtual DOM","unit":"","target":"0"},"5":{"heading":"The Wrong Turn"},"6":{"syntax":"ts"},"7":{"heading":"\"Sophistication\""},"8":{"heading":"Premature Deoptimization"},"9":{"heading":"Our Heresy"},"10":{"syntax":"ts"},"11":{"heading":"The Fallout"},"12":{"heading":"The Numbers"},"13":{"heading":"The Platform Is Enough"},"14":{"heading":"To the Angular Dev"},"15":{"heading":"To the React Dev"},"16":{"heading":"The Measure of Success"}},"services":{"TocMenuService":{"open":"false","available":"[]"}},"directives":{}}</script><script type="application/json" id="yaw-ssg-routes">["/","/showcase","/examples","/docs"]</script></head>
+<body data-ssg-ready="">
+
+
+<app-root data-rx-host="">
+        <nav-bar data-rx-host="" data-ssg-id="0">
+        <nav>
+            <a class="logo has-funnel" toc-menu-toggle=""><span class="logo-text">YAW</span></a>
+            <div class="links">
+                <a data-rx-bind-class-active="isActive('/')" data-rx-bind-on-click="navigateHome" class="active">Manifesto</a>
+                <a data-rx-bind-class-active="isActive('/showcase')" data-rx-bind-on-click="navigateShowcase">Showcase</a>
+                <a data-rx-bind-class-active="isActive('/docs')" data-rx-bind-on-click="navigateDocs">Docs</a>
+                <a data-rx-bind-class-active="isActive('/examples')" data-rx-bind-on-click="navigateExamples">Examples</a>
+            </div>
+        </nav>
+    </nav-bar>
+        <rx-router-outlet data-rx-host=""><manifesto-page data-rx-host="">
+        <hero-section data-rx-host="">
+        <div class="noise" perlin-bg=""></div>
+        <div class="hero">
+            <h1 class="title">YAW</h1>
+            <p class="sub">The DOM is not your enemy.</p>
+            <div class="stats">
+                <stat-counter label="bundle" unit="KB" target="16" data-rx-host="" data-ssg-id="1" style="--dw: 2ch;"><div class="stat"><span class="value"><span class="digits"><span data-rx-bind-text="count">0</span></span><span class="unit"><span data-rx-bind-text="unit">KB</span></span></span><span class="label"><span data-rx-bind-text="label">bundle</span></span></div></stat-counter>
+                <stat-counter label="node_modules" unit="MB" target="9" data-rx-host="" data-ssg-id="2" style="--dw: 1ch;"><div class="stat"><span class="value"><span class="digits"><span data-rx-bind-text="count">0</span></span><span class="unit"><span data-rx-bind-text="unit">MB</span></span></span><span class="label"><span data-rx-bind-text="label">node_modules</span></span></div></stat-counter>
+                <stat-counter label="dependency" target="1" data-rx-host="" data-ssg-id="3" style="--dw: 1ch;"><div class="stat"><span class="value"><span class="digits"><span data-rx-bind-text="count">0</span></span><span class="unit"><span data-rx-bind-text="unit"></span></span></span><span class="label"><span data-rx-bind-text="label">dependency</span></span></div></stat-counter>
+                <stat-counter label="virtual DOM" target="0" data-rx-host="" data-ssg-id="4" style="--dw: 1ch;"><div class="stat"><span class="value"><span class="digits"><span data-rx-bind-text="count">0</span></span><span class="unit"><span data-rx-bind-text="unit"></span></span></span><span class="label"><span data-rx-bind-text="label">virtual DOM</span></span></div></stat-counter>
+            </div>
+        </div>
+    </hero-section>
+
+        <div class="sections">
+            <manifesto-section heading="The Wrong Turn" data-rx-host="" data-ssg-id="5">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">The Wrong Turn</span></h2>
+            <div class="body">
+                <p>We were handed a runtime that renders trees in C++, and we responded by building
+                JavaScript replicas of it. Twice. Once in Google's cathedral, once in Facebook's garage.</p>
+                <p>React asks you to pretend the DOM doesn't exist, then builds a virtual one, diffs it,
+                and finally touches the real thing. The virtual part is pure tax.
+                You pay for the allocation, you pay for the diff, you pay for the reconciliation,
+                and at the end of the day you still call <code>appendChild</code> like it's 1998.
+                All to solve a problem they invented: "What if direct DOM manipulation was unpredictable?"
+                It wasn't.</p>
+                <p>Angular shipped a framework that downloads half the internet to render a button.
+                Zone.js monkey-patches every async API in the browser just to know when to check
+                if anything changed. They built a change detection system so complex it needs its own
+                debugging tools. And for what? So you can write <code>{{user.name}}</code> instead of
+                <code>user.name$.subscribe(name =&gt; this.textContent = name)</code>.
+                They've since conceded by shipping signals — a second reactivity primitive bolted
+                onto a framework that wasn't designed for them. Two abstractions deep and Zone.js
+                still isn't gone.</p>
+                <p>Both replaced <code>HTMLElement</code> with their own component model. The browser's
+                built-in tools — Elements panel, <code>querySelector</code>,
+                <code>connectedCallback</code>, <code>closest()</code> — stopped working.
+                So they rebuilt those too.</p>
+                <code-block syntax="ts" data-rx-host="" data-ssg-id="6"><pre class="cb"><code><span class="tk-comment">// React 19: 60KB gzipped to call appendChild</span>
+<span class="tk-keyword">const</span> [<span class="tk-ident">count</span>, <span class="tk-ident">setCount</span>] = <span class="tk-fn">useState</span>(<span class="tk-number">0</span>);
+<span class="tk-fn">useEffect</span>(() =&gt; { <span class="tk-ident">document</span>.<span class="tk-ident">title</span> = <span class="tk-ident">count</span>; }, [<span class="tk-ident">count</span>]);</code></pre></code-block>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="&quot;Sophistication&quot;" data-rx-host="" data-ssg-id="7">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">"Sophistication"</span></h2>
+            <div class="body">
+                <p>They told us this was necessary. That the web was "too complex" for simple solutions.
+                That we needed "predictable state management" and "unidirectional data flow"
+                and "fine-grained reactivity."</p>
+                <p>These are not insights. These are apologies for overhead.</p>
+                <p>Angular's "change detection" is "we have no idea when your state changes so we check
+                everything, constantly, or patch the browser to tell us." React's "unidirectional data flow"
+                is just "we diff two trees because we don't trust you to update what changed."</p>
+                <p>The actual solution was always there: push updates directly to the DOM when you know
+                they happened. That's what Observables do. That's what the browser's been doing
+                since <code>MutationObserver</code>.</p>
+                <p>The "sophistication" was never in the runtime. It was in convincing you that you needed it.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="Premature Deoptimization" data-rx-host="" data-ssg-id="8">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">Premature Deoptimization</span></h2>
+            <div class="body">
+                <p>DOM writes were never slow. Inserting elements takes
+                microseconds. At a few thousand elements, the browser lags regardless — layout and paint
+                are the bottleneck, not JavaScript. They built their entire architecture around
+                optimising something that doesn't matter at small scale and can't be helped at large scale.
+                <a href="/examples/scheduler-theatre">See it for yourself.</a></p>
+                <p>Add a layer that makes simple things slow, then spend a career making the layer fast.</p>
+                <p>We optimise for latency — the thinnest possible path between intent and effect.
+                The user doesn't care how cleverly your framework writes to the DOM. Layout is already lazy precisely because it's expensive —
+                it's not something you need a framework to optimise for you.</p>
+                <p>The performance pitch isn't ours. It's the browser's. We get out of its way.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="Our Heresy" data-rx-host="" data-ssg-id="9">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">Our Heresy</span></h2>
+            <div class="body">
+                <p>We reject Zone.js. Not because we hate debugging, but because we can unsubscribe.</p>
+                <p>We reject the virtual DOM. Not because we're Luddites, but because we can read.</p>
+                <p>We reject 3GB of <code>node_modules</code>. Not because we enjoy suffering, but because
+                the platform already ships with a DOM.</p>
+                <p>We write <code>{{count}}</code> and <code>[label]="status"</code>
+                because no one wants to write <code>count$.subscribe(v =&gt; el.textContent = v)</code> inline.
+                That's not a principle — that's jQuery with extra steps. The template is the abstraction
+                that earns its keep: it compiles to exactly those subscriptions and nothing else. No virtual
+                copy. No diff. No reconciliation queue. Just <code>data-rx-bind-prop-label="status"</code>
+                stamped into real DOM, read by the element that owns it.</p>
+                <p><code>rx-for</code> stamps DOM nodes. The browser instantiates them. They bind themselves.
+                The tree walks itself. We don't manage components — we register custom elements
+                and get out of the way.</p>
+                <p>This is not minimalism for aesthetics. This is removing solutions to problems we didn't have.</p>
+                <code-block syntax="ts" data-rx-host="" data-ssg-id="10"><pre class="cb"><code><span class="tk-comment">// YAW: 16KB gzipped. Direct. Honest.</span>
+<span class="tk-decorator">@state</span> <span class="tk-ident">count</span> = <span class="tk-number">0</span>;
+<span class="tk-comment">// That's it. The DOM updates. No diff. No reconciliation.</span></code></pre></code-block>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="The Fallout" data-rx-host="" data-ssg-id="11">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">The Fallout</span></h2>
+            <div class="body">
+                <p>Every feature below fell out of using the platform correctly.
+                Not dedicated infrastructure. Consequences.</p>
+
+                <ul class="consequences">
+                    <li>One dependency — <a href="https://rxjs.dev">RxJS</a>.
+                    One abstraction — the Observable, a monad. It's the right one
+                    and it's being
+                    <a href="https://github.com/WICG/observable">standardised</a>
+                    (even RxJS is on borrowed time)
+                    and you've been using it all along —
+                    <code>addEventListener</code>, <code>MutationObserver</code>,
+                    <code>IntersectionObserver</code>, <code>ResizeObserver</code>,
+                    <code>PerformanceObserver</code>, …</li>
+
+                    <li>Template rendering as <code>innerHTML</code> — the browser's
+                    C++ HTML parser does the work. The template renders once — the fastest
+                    path into the DOM — and never re-renders. Updates are surgical:
+                    each binding subscribes to its node directly. No virtual DOM, no
+                    reconciler, no diff pass, no "should this component update?"</li>
+
+                    <li><a href="/docs/components/state/decorator">One primitive for reactive state</a> —
+                    <code>@state</code> wraps a field in a
+                    <code>BehaviorSubject</code>. It lives on the DOM nodes
+                    themselves — <code>{{count}}</code> resolves against the
+                    element that owns it. Services use the same observable.
+                    No signals, no atoms, no stores. One mechanism everywhere.</li>
+
+                    <li>Template binding as <a href="/docs/components/paths">path
+                    resolution</a>, not a template language.
+                    Logic stays in TypeScript where it belongs, not
+                    in a proxy language between your code and the DOM. No DSL, no pipes,
+                    no structural directive syntax.
+                    <a href="/docs/components/bindings/data">One grammar</a> for text,
+                    properties, attributes, classes, styles, taps, events, and refs.
+                        <ul>
+                            <li><a href="/docs/components/paths/dotted">Dotted paths</a>
+                            resolve segment by segment — each segment independently
+                            subscribes if it's observable. Any mix of reactive and plain
+                            segments works.</li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/docs/components/paths/carets">Scope resolution as DOM
+                    traversal</a>, not explicit annotation. The DOM is already a tree —
+                    bindings just walk it.
+                        <ul>
+                            <li><a href="/examples/nesting-example">A nested component</a> — <code>{{count}}</code> resolves against the host.
+                            <code>{{^^count}}</code> walks up two host ancestors
+                            via <code>element.closest('[data-rx-host]')</code>.</li>
+                            <li><a href="/showcase">A leaf component three layers deep</a> calls a method on
+                            the root, passing data from the middle:
+                            <code>^^.toggleStep(^.trackKey, idx)</code>. No props
+                            drilled, no events emitted, no context provider.</li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/examples/reactive-palette">Child state can flow up</a> —
+                    <code>[(value)]="hue"</code>. No <code>@Output()</code>
+                    decorator. No event emitter. No callback prop.</li>
+
+                    <li><a href="/docs/components/state/dollar">Derived values</a> by
+                    transforming existing observables, not a dedicated primitive. Your
+                    state is already observable — just transform it.
+                        <ul>
+                            <li>No <code>computed()</code>. No <code>useMemo()</code>.
+                            No dependency arrays.</li>
+                            <li><code>Observable&lt;number[]&gt;</code>
+                            <a href="/examples/rx-graph">flows through a binding</a>
+                            the same way a number does — no framework input system.</li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/docs/components/marshalling/custom-codecs">Typed
+                    attributes</a>, not manual casting. Declare
+                    <code>@state total: Decimal</code> and the string attribute
+                    becomes a <code>Decimal</code> on connect. No
+                    <code>Number(params['id'])</code> scattered through your
+                    code. <code>Temporal.PlainDate</code>, <code>Address</code> — same
+                    story.</li>
+
+                    <li>Iterative rendering as an optional, tree-shakable
+                    <a href="/docs/directives/builtin/rx-for">directive</a>, not a framework
+                    primitive. Don't use it, don't ship it. Splat, scope, destructure,
+                    keyed — one expression.</li>
+
+                    <li><a href="/docs/components/bindings/imperative">Refs</a> are the raw DOM node —
+                    <code>&lt;canvas #graph&gt;</code> gives you an
+                    <code>HTMLCanvasElement</code>. Not a wrapper. Not a ref object.
+                    The element itself.</li>
+
+                    <li><a href="/docs/services/resolve">Dependency injection</a> as a DOM subtree,
+                    not a module graph. Provide at a component, every descendant resolves
+                    it. The element tree is the injector tree. 94 lines.</li>
+
+                    <li><a href="/docs/components/lifecycle">Lifecycle</a> is
+                    <code>connectedCallback</code> and <code>disconnectedCallback</code>.
+                    The only hook we added was <code>onRender</code> and it's only because we had to because we inject the template.</li>
+
+                    <li>Automatic cleanup — <code>disconnectedCallback</code> unsubscribes
+                    all bindings, tears down directives, destroys injector instances. No
+                    <code>useEffect</code> cleanup functions. You only clean up what
+                    you own.</li>
+
+                    <li><a href="/docs/navigation/api">Routing</a> as a
+                    <code>BehaviorSubject</code> — one service, one element, one
+                    observable. Active links, lazy loading, transitions — just
+                    subscriptions to the same stream.</li>
+
+                    <li><a href="/docs/ssg">SSG</a> — 292 lines.
+                        <ul>
+                            <li><a href="/docs/ssg/browser">Puppeteer visiting routes in parallel browser tabs</a> — the
+                            browser's own engine renders, not a JS-side reimplementation.</li>
+                            <li>Templates compiled at build time —
+                            <code>{{count}}</code> becomes
+                            <code>&lt;span data-rx-bind-text="count"&gt;</code>.
+                            The runtime reads <code>data-rx-bind-*</code> attributes
+                            off the DOM — the runtime template parser is skipped.</li>
+                            <li>No <a href="/docs/ssg/hydration">hydration mismatch</a> —
+                            server-rendered HTML with custom elements upgrades in place.
+                            No virtual tree to reconcile against.</li>
+                        </ul>
+                    </li>
+
+                    <li><a href="/docs/components/projection">Content projection</a> as
+                    <code>&lt;slot&gt;</code> — children go in, the template says
+                    where they appear. <code>rx-if</code> (tree-shakable like
+                    <code>rx-for</code>) stashes DOM in a
+                    <code>&lt;template&gt;</code> element — the browser's own
+                    inert container. No <code>ng-content</code>, no
+                    <code>{children}</code> prop.</li>
+
+                    <li><a href="/docs/getting-started/bundler-config">Bundler agnostic</a>
+                    — Vite, Rollup, esbuild, Webpack. The framework is a TypeScript
+                    transformer and a runtime. Not coupled to a build tool.</li>
+
+                    <li>The Elements panel just works — no shadow DOM to pierce, no virtual
+                    tree to decode. <code>querySelector</code> returns the actual component.
+                    You can call methods on it from the console.</li>
+
+                    <li>The CSS cascade just works — no shadow DOM encapsulation to
+                    fight. Styles scoped by selector prefix, not encapsulation. Theming
+                    just works. No <code>::part()</code> escape hatches. The accessibility
+                    tree is the component tree — screen readers see what's rendered.</li>
+
+                    <li>Third-party DOM libraries just work — D3, GSAP, Leaflet expect
+                    elements. Yaw gives them elements. No refs, no effects, no portal
+                    hacks.</li>
+
+                    <li>Standard events, <code>MutationObserver</code>, back/forward cache,
+                    browser profiling — all work because the components are real DOM nodes
+                    that the browser already knows how to handle.</li>
+                </ul>
+
+                <p>Side effects of correct foundational decisions, delivered in hundreds of lines
+                instead of hundreds of thousands.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="The Numbers" data-rx-host="" data-ssg-id="12">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">The Numbers</span></h2>
+            <div class="body">
+                <p>The core runtime — <code>state.ts</code>, <code>rx-element.ts</code>,
+                <code>binding/setup.ts</code>, <code>binding/path.ts</code> — is 560 lines.</p>
+                <p>The whole framework across all packages is 4,712. That includes
+                <code>yaw-common</code>, a shared template and style transform library (722 lines),
+                <code>yaw-transformer</code>, a TypeScript build-time transformer (567 lines),
+                <code>yaw-ts-plugin</code>, a TypeScript language service plugin (464 lines),
+                <code>yaw-ssg</code>, an SSG renderer (261 lines),
+                <code>yaw-vscode</code>, a VSCode extension for inline template and style
+                highlighting (150 lines), and four bundler plugins —
+                <code>yaw-vite</code> (64 lines), <code>yaw-esbuild</code> (59 lines),
+                <code>yaw-rollup</code> (42 lines), <code>yaw-webpack</code> (13 lines).</p>
+                <p>React's runtime alone is 245,000 lines. Angular's is 305,000+.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="The Platform Is Enough" data-rx-host="" data-ssg-id="13">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">The Platform Is Enough</span></h2>
+            <div class="body">
+                <p>HTML parses. Custom elements instantiate. Attributes are strings we can scan.
+                <code>connectedCallback</code> is <code>onInit</code>.
+                <code>disconnectedCallback</code> is <code>onDestroy</code>.
+                <code>innerHTML</code> renders trees.
+                RxJS handles asynchrony. The DI container is a Map with a parent pointer.
+                Everything else is ceremony.</p>
+                <p>You want server-side rendering? The browser parses HTML. You want hydration?
+                Custom elements upgrade when definitions load. You want lazy loading? Dynamic
+                <code>import()</code> and <code>customElements.define</code>. You want dev tools?
+                They're called the <strong>Elements panel</strong>. Ours works because we didn't break it.</p>
+                <p>Yes, we built yet another framework 🙄 (although it's one you can read in an afternoon!).
+                But the convention it's built on will
+                hopefully outlast them all: extend <code>HTMLElement</code>, scan your attributes,
+                subscribe to Observables, clean up when removed. And that's the API. That's the whole API.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="To the Angular Dev" data-rx-host="" data-ssg-id="14">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">To the Angular Dev</span></h2>
+            <div class="body">
+                <p>We know the churn is exhausting. NgModule to standalone, decorators to signals,
+                Zone.js to zoneless — each one an admission that they got the last abstraction wrong.
+                Again.</p>
+                <p>Our DI is a function that walks up a parent chain. Our components are classes that
+                extend <code>HTMLElement</code>. Our templates are HTML. You already know this pattern.
+                We just removed the 305,000 lines of abstraction between you and it.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="To the React Dev" data-rx-host="" data-ssg-id="15">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">To the React Dev</span></h2>
+            <div class="body">
+                <p>The <code>useEffect</code> dependency array is a manual memory management exercise
+                disguised as declarative code. The "rules of Hooks" are a runtime linter because the
+                abstraction leaks. The concurrent features are fixing scheduling problems created by
+                the scheduler.</p>
+                <p>We don't have rules. We have <code>subscribe</code> and <code>unsubscribe</code>.
+                We don't have a scheduler. We have the browser's event loop. We don't have "server
+                components" because our components <strong>are</strong> HTML — they render the same everywhere.</p>
+            </div>
+        </section>
+    </manifesto-section>
+
+            <manifesto-section heading="The Measure of Success" data-rx-host="" data-ssg-id="16">
+        <section>
+            <h2 class="heading"><span data-rx-bind-text="heading">The Measure of Success</span></h2>
+            <div class="body">
+                <p>We ship in kilobytes, not megabytes. We start instantly, not after hydration.
+                We update precisely, not after diffing. We garbage collect automatically, not after
+                manual effect cleanup.</p>
+                <p>Our <code>node_modules</code> fits in an email attachment.
+                Our mental model fits in a sentence:</p>
+                <strong class="model">Observables push, DOM reflects, elements clean up.</strong>
+                <p>The web was never broken. We just convinced ourselves it was,
+                then sold each other expensive repairs.</p>
+                <p class="closer">We're done. The DOM is fine. Use it.</p>
+            </div>
+        </section>
+    </manifesto-section>
+        </div>
+
+        <footer-section data-rx-host="">
+        <footer>
+            <p class="size">This page: <strong>32KB</strong> gzipped.</p>
+            <p class="compare">React 19: 60KB. Angular 21: 171KB. You do the math.</p>
+            <p class="copy">You're All Wrong</p>
+        </footer>
+    </footer-section>
+    </manifesto-page></rx-router-outlet>
+    </app-root></body></html>

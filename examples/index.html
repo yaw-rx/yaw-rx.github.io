@@ -1,0 +1,1751 @@
+<!DOCTYPE html><html lang="en"><head>
+<script>globalThis.__yaw_hydrate=true;</script>
+    <meta charset="UTF-8">
+    <title>YAW</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <style>html, body { margin: 0; background: #000; }</style>
+  <script type="module" crossorigin="" src="/assets/index-CnOCKmfx.js"></script>
+  <link rel="modulepreload" crossorigin="" href="/assets/rx-element-4ZUxoBWu.js">
+  <link rel="modulepreload" crossorigin="" href="/assets/injectable-D92TCiPx.js">
+  <link rel="modulepreload" crossorigin="" href="/assets/toc-menu.service-CWF5-U3_.js">
+<link rel="modulepreload" as="script" crossorigin="" href="/assets/examples-page-ckdQJjW0.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/signal-meter.component-CdepveK8.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/rx-for-B1kau3Sb.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/code-block.component-SfvraQFF.js"><link rel="modulepreload" as="script" crossorigin="" href="/assets/interval-GrA6VLTr.js"><style id="yaw-ssg-styles">nav-bar nav { position: fixed; top: 0px; left: 0px; right: 0px; z-index: 300; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); border-bottom: var(--border-width) solid var(--bg-6); }
+nav-bar .logo { font-weight: 900; font-size: 1.4rem; color: var(--white); text-decoration: none; letter-spacing: -1px; margin-right: 2rem; position: relative; cursor: default; -webkit-tap-highlight-color: transparent; }
+nav-bar .logo.has-menu { cursor: pointer; }
+nav-bar .logo.has-funnel::after { content: ""; position: absolute; bottom: -7px; left: 0px; width: 100%; height: 8px; background: linear-gradient(var(--text), var(--text)) center 0    / 70% 1px no-repeat,
+                       linear-gradient(var(--text), var(--text)) center 50%  / 50% 1px no-repeat,
+                       linear-gradient(var(--text), var(--text)) center 100% / 30% 1px no-repeat; opacity: 0; transition: opacity 0.8s, background 0.3s; }
+nav-bar .logo.has-funnel.funnel-visible::after { opacity: 0.7; }
+nav-bar .logo.funnel-visible .logo-text { mask-image: linear-gradient(-75deg, var(--black) 30%, rgba(0,0,0,.6) 50%, var(--black) 70%); mask-size: 200%; animation: 2s ease 0s 1 normal forwards running shine; }
+@-webkit-keyframes shine { 
+  0% { mask-position: 150% center; }
+  100% { mask-position: -50% center; }
+}
+nav-bar .logo.menu-open::after { opacity: 1; background: linear-gradient(var(--accent), var(--accent)) center 0    / 70% 1px no-repeat,
+                       linear-gradient(var(--accent), var(--accent)) center 50%  / 50% 1px no-repeat,
+                       linear-gradient(var(--accent), var(--accent)) center 100% / 30% 1px no-repeat; }
+nav-bar .links { display: flex; gap: 2rem; overflow-x: auto; scrollbar-width: none; }
+nav-bar .links::-webkit-scrollbar { display: none; }
+nav-bar .links a { color: var(--secondary); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; cursor: pointer; transition: color 0.2s; white-space: nowrap; position: relative; -webkit-tap-highlight-color: transparent; }
+nav-bar .links a:hover { color: var(--white); }
+nav-bar .links a.active { color: var(--white); }
+nav-bar .links a.active::after { content: ""; position: absolute; left: 0px; right: 0px; bottom: -4px; height: 2px; background: var(--white); }
+@media (max-width: 768px) {
+  nav-bar nav { padding: 0.75rem 1rem; }
+  nav-bar .logo { margin-right: 1rem; }
+  nav-bar .links { gap: 1rem; }
+}
+@media (max-width: 480px) {
+  nav-bar nav { padding: 0.75rem 0.5rem 0.75rem 0.75rem; }
+  nav-bar .logo { margin-right: 0.75rem; font-size: 1.2rem; }
+  nav-bar .links { gap: 0.75rem; }
+  nav-bar .links a { font-size: 0.75rem; letter-spacing: 0px; }
+}
+app-root { display: block; }
+:root { --black: #000; --bg-1: #050505; --bg-2: #0a0a0a; --bg-3: #111; --bg-4: #151515; --bg-5: #1a1a1a; --bg-6: #222; --bg-7: #242424; --border: #333; --border-light: #444; --dim: #808080; --slate: #828790; --muted: #9a9a9a; --muted-alt: #a5a5a5; --secondary: #c0c0c0; --subtle: #d1d1d1; --text: #e5e5e5; --text-light: #f5f5f5; --white: #fff; --accent: #8af; --navy: #1a2352; --green: #4f4; --red: #f44; --blue: #44f; --amber: #fa4; --gold: #ffcb6b; --salmon: #f78c6c; --font-mono: monospace; --tracking: 0.08em; --radius-sm: 4px; --radius: 6px; --radius-lg: 8px; --border-width: 1px; }
+html { font-size: 100%; }
+html, body { margin: 0px; background: var(--black); color: var(--text); }
+*, ::before, ::after { box-sizing: border-box; }
+button, rx-button { user-select: none; cursor: pointer; transition: transform 0.1s, filter 0.1s; }
+button:active, rx-button:active { transform: scale(0.96); filter: brightness(1.3); }
+doc-section { display: block; }
+doc-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+doc-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+doc-section .lede + .lede { margin-top: 0.75rem; }
+doc-section .lede + code-block { margin-top: 1rem; }
+doc-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+doc-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+doc-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+doc-section .host > code-block { margin-bottom: 1rem; }
+doc-section .host .ex { margin-top: 1rem; }
+doc-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+doc-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+doc-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+doc-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  doc-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+doc-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+doc-section .live > * { max-width: 100%; }
+code-block { display: flex; min-height: 0px; }
+code-block .cb { background: rgba(255, 255, 255, 0.04); border: var(--border-width) solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg); padding: 1.25rem; overflow-x: auto; margin: 0px; backdrop-filter: blur(4px); flex: 1 1 0%; box-sizing: border-box; min-width: 0px; }
+code-block code { font-family: "Fira Code", "Cascadia Code", monospace; font-size: 0.8rem; color: rgb(221, 221, 221); line-height: 1.55; white-space: pre; background: none; }
+code-block .tk-keyword { color: rgb(199, 146, 234); }
+code-block .tk-string { color: rgb(195, 232, 141); }
+code-block .tk-number { color: var(--salmon); }
+code-block .tk-comment { color: rgb(106, 138, 153); font-style: italic; }
+code-block .tk-regex { color: rgb(255, 83, 112); }
+code-block .tk-decorator { color: var(--gold); }
+code-block .tk-type { color: var(--gold); }
+code-block .tk-fn { color: rgb(130, 170, 255); }
+code-block .tk-const { color: var(--salmon); }
+code-block .tk-ident { color: rgb(238, 255, 255); }
+code-block .tk-tag { color: rgb(240, 113, 120); }
+code-block .tk-attr { color: var(--gold); }
+code-block .tk-punct { color: rgb(137, 221, 255); }
+toc-menu-item { display: flex; flex-direction: column; }
+toc-menu-item a { color: var(--muted); text-decoration: none; cursor: pointer; padding: 0.2rem 0px 0.2rem 0.6rem; font-size: 0.8rem; font-weight: 400; transition: color 0.15s; border-left: 2px solid transparent; margin-left: -0.6rem; white-space: nowrap; }
+toc-menu-item a:hover { color: var(--white); }
+toc-menu-item a.active { color: var(--accent); border-left-color: var(--accent); }
+toc-menu-item .children { display: flex; flex-direction: column; max-height: 0px; overflow: hidden; opacity: 0; padding-left: 0.42rem; margin-left: 0.1rem; border-left: var(--border-width) solid var(--bg-5); }
+toc-menu-item .children.expanded { max-height: 800px; opacity: 1; padding-top: 0.15rem; padding-bottom: 0.35rem; }
+toc-menu { display: block; box-sizing: border-box; flex: 0 0 auto; position: sticky; top: 4rem; align-self: flex-start; height: calc(-4rem + 100vh); padding: 0.5rem 1.5rem 0.5rem 2rem; border-right: var(--border-width) solid var(--bg-4); overflow-y: auto; }
+toc-menu aside { display: flex; flex-direction: column; gap: 0.6rem; }
+toc-menu .label { color: var(--dim); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; }
+toc-menu nav { display: flex; flex-direction: column; gap: 0.15rem; font-family: var(--font-mono); }
+@media (max-width: 768px) {
+  toc-menu { display: none; position: fixed; inset: 0px; height: 100vh; border-right: none; }
+}
+signal-meter { display: block; }
+signal-meter .meter { position: relative; width: 14rem; height: 14rem; }
+signal-meter .ring { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+signal-meter .track { fill: none; stroke: rgb(22, 22, 22); stroke-width: 6; }
+signal-meter .fill { fill: none; stroke-width: 7; stroke-linecap: round; stroke-dasharray: 264; stroke: hsl(var(--hue), 85%, var(--lit)); stroke-dashoffset: calc(264 - 264 * var(--pct, 0)); filter: drop-shadow(0 0 var(--glow) hsl(var(--hue), 90%, var(--lit))); }
+signal-meter .readout { position: absolute; inset: 0px; display: flex; align-items: center; justify-content: center; gap: 0.2rem; pointer-events: none; }
+signal-meter .value { font-size: 2.8rem; font-weight: 800; font-family: var(--font-mono); color: hsl(var(--hue), 90%, var(--lit)); text-shadow: 0 0 var(--glow) hsl(var(--hue), 90%, var(--lit)); }
+signal-meter .unit { font-size: 1rem; color: var(--dim); font-family: var(--font-mono); margin-top: 1rem; }
+yaw-slider { display: block; padding: 0.5rem 0.6rem; }
+yaw-slider .track { position: relative; height: 0.5rem; background: var(--bg-5); border: var(--border-width) solid var(--bg-6); border-radius: 1rem; cursor: pointer; touch-action: none; user-select: none; }
+yaw-slider .fill { position: absolute; top: 0px; bottom: 0px; left: 0px; background: linear-gradient(90deg, #557 0%, var(--accent) 100%); border-radius: 1rem; pointer-events: none; }
+yaw-slider .thumb { position: absolute; top: 50%; width: 1.2rem; height: 1.2rem; background: var(--white); border: 2px solid var(--accent); border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 55%, transparent); pointer-events: none; transition: box-shadow 0.15s; }
+yaw-slider .track:active .thumb { box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 90%, transparent); }
+slider-section { display: block; }
+slider-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+slider-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+slider-section .lede + .lede { margin-top: 0.75rem; }
+slider-section .lede + code-block { margin-top: 1rem; }
+slider-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+slider-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+slider-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+slider-section .host > code-block { margin-bottom: 1rem; }
+slider-section .host .ex { margin-top: 1rem; }
+slider-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+slider-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+slider-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+slider-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  slider-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+slider-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+slider-section .live > * { max-width: 100%; }
+slider-section { display: block; }
+slider-section .live { display: flex; flex-direction: column; gap: 1rem; }
+slider-section .state { margin: 0px; font-family: var(--font-mono); color: var(--secondary); font-size: 0.85rem; }
+slider-section .state .status { color: var(--accent); }
+color-playground { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem 1rem; align-items: center; }
+color-playground label { color: var(--secondary); font-size: 0.8rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking); }
+color-playground em { color: var(--accent); font-style: normal; display: inline-block; width: 4ch; text-align: right; }
+color-playground .out { grid-column: 1 / -1; background: var(--bg-2); padding: 0.6rem 0.75rem; border-radius: var(--radius-sm); color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; border: var(--border-width) solid var(--bg-5); }
+color-playground .swatch { grid-column: 1 / -1; border-radius: var(--radius-lg); border: var(--border-width) solid var(--bg-5); min-height: 6rem; box-shadow: rgba(0, 0, 0, 0.35) 0px 0px 60px inset; transition: background 0.1s linear; }
+color-playground-section { display: block; }
+color-playground-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+color-playground-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+color-playground-section .lede + .lede { margin-top: 0.75rem; }
+color-playground-section .lede + code-block { margin-top: 1rem; }
+color-playground-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+color-playground-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+color-playground-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+color-playground-section .host > code-block { margin-bottom: 1rem; }
+color-playground-section .host .ex { margin-top: 1rem; }
+color-playground-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+color-playground-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+color-playground-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+color-playground-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  color-playground-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+color-playground-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+color-playground-section .live > * { max-width: 100%; }
+color-playground-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+color-playground-section .live color-playground { display: grid; grid-template-columns: auto 1fr; gap: 0.75rem 1rem; align-items: center; }
+color-playground-section .live color-playground .out, color-playground-section .live color-playground .swatch { grid-column: 1 / -1; }
+signal-meter-section { display: block; }
+signal-meter-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+signal-meter-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+signal-meter-section .lede + .lede { margin-top: 0.75rem; }
+signal-meter-section .lede + code-block { margin-top: 1rem; }
+signal-meter-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+signal-meter-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+signal-meter-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+signal-meter-section .host > code-block { margin-bottom: 1rem; }
+signal-meter-section .host .ex { margin-top: 1rem; }
+signal-meter-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+signal-meter-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+signal-meter-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+signal-meter-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  signal-meter-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+signal-meter-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+signal-meter-section .live > * { max-width: 100%; }
+signal-meter-section .live { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; padding: 1.75rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+signal-meter-section .live yaw-slider { width: 100%; max-width: 22rem; }
+rx-graph { display: block; position: relative; }
+rx-graph .legend { position: absolute; top: 0.25rem; left: 0.4rem; display: flex; flex-direction: column; gap: 0.1rem; font-family: var(--font-mono); font-size: 0.55rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.06em; pointer-events: none; background: rgba(3, 3, 3, 0.75); padding: 0.2rem 0.4rem; border-radius: var(--radius-sm); }
+rx-graph .legend span { display: flex; align-items: center; gap: 0.2rem; }
+rx-graph .legend .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; }
+rx-graph canvas { display: block; width: 100%; height: 6rem; background: rgb(3, 3, 3); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+graph-section { display: block; }
+graph-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+graph-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+graph-section .lede + .lede { margin-top: 0.75rem; }
+graph-section .lede + code-block { margin-top: 1rem; }
+graph-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+graph-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+graph-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+graph-section .host > code-block { margin-bottom: 1rem; }
+graph-section .host .ex { margin-top: 1rem; }
+graph-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+graph-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+graph-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+graph-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  graph-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+graph-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+graph-section .live > * { max-width: 100%; }
+graph-section { display: block; }
+graph-section .live { padding: 1.25rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+wave-mixer { display: block; }
+wave-mixer .controls { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+wave-mixer .row { display: flex; gap: 0.3rem; align-items: center; }
+wave-mixer .row yaw-slider { flex: 1 1 0%; }
+wave-mixer .label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+wave-mixer .readout { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); text-align: right; }
+wave-mixer rx-graph { --canvas-height: 10rem; }
+wave-mixer rx-graph canvas { height: 10rem; }
+wave-mixer-section { display: block; }
+wave-mixer-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+wave-mixer-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+wave-mixer-section .lede + .lede { margin-top: 0.75rem; }
+wave-mixer-section .lede + code-block { margin-top: 1rem; }
+wave-mixer-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+wave-mixer-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+wave-mixer-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+wave-mixer-section .host > code-block { margin-bottom: 1rem; }
+wave-mixer-section .host .ex { margin-top: 1rem; }
+wave-mixer-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+wave-mixer-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+wave-mixer-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+wave-mixer-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  wave-mixer-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+wave-mixer-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+wave-mixer-section .live > * { max-width: 100%; }
+wave-mixer-section .live { padding: 1.25rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+nested-level { display: block; }
+nested-level .nested { border: 1px dashed var(--border); border-radius: var(--radius); padding: 0.5rem 0.75rem 0.6rem; margin: 0.3rem 0px; background: rgb(7, 7, 7); }
+nested-level .tag { color: var(--dim); font-size: 0.65rem; letter-spacing: var(--tracking); text-transform: uppercase; margin-bottom: 0.4rem; }
+nested-level .content { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+page-echo { display: block; }
+page-echo .echo { background: rgb(10, 17, 40); border: var(--border-width) solid var(--navy); border-radius: var(--radius); padding: 1rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.85rem; }
+page-echo .section + .section { margin-top: 1rem; }
+page-echo .label { color: var(--slate); font-size: 0.7rem; letter-spacing: var(--tracking); text-transform: uppercase; margin-bottom: 0.5rem; }
+page-echo .label code { color: var(--accent); font-size: inherit; }
+page-echo .body { display: flex; flex-direction: column; gap: 0.4rem; padding: 0.5rem 0.6rem; background: var(--bg-1); border-radius: var(--radius-sm); }
+page-echo .row { display: flex; gap: 0.5rem; align-items: center; }
+page-echo .row code { color: var(--accent); background: transparent; padding: 0.35rem 0.4rem; }
+page-echo .pre { color: var(--slate); }
+page-echo .sep { color: rgb(51, 51, 68); }
+page-echo .row button { background: rgb(15, 26, 58); border: var(--border-width) solid var(--navy); color: var(--accent); padding: 0.35rem 0.7rem; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 0.8rem; cursor: pointer; border-radius: var(--radius-sm); }
+page-echo .row button:hover { background: rgb(24, 37, 85); color: var(--white); }
+page-echo .row button.active { background: var(--navy); border-color: var(--accent); color: var(--white); }
+page-echo .echo.blended { mix-blend-mode: difference; }
+nesting-section { display: block; }
+nesting-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+nesting-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+nesting-section .lede + .lede { margin-top: 0.75rem; }
+nesting-section .lede + code-block { margin-top: 1rem; }
+nesting-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+nesting-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+nesting-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+nesting-section .host > code-block { margin-bottom: 1rem; }
+nesting-section .host .ex { margin-top: 1rem; }
+nesting-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+nesting-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+nesting-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+nesting-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  nesting-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+nesting-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+nesting-section .live > * { max-width: 100%; }
+nesting-section { display: block; }
+nesting-section .buttons { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+nesting-section .state { margin: 0.75rem 0px 0px; font-family: var(--font-mono); color: var(--secondary); font-size: 0.85rem; }
+nesting-section .state .status { color: var(--accent); }
+nesting-section button { background: var(--bg-3); border: var(--border-width) solid var(--border); color: var(--white); padding: 0.5rem 1rem; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 0.9rem; cursor: pointer; border-radius: var(--radius); margin: 0.15rem; }
+nesting-section button:hover { background: var(--bg-5); border-color: var(--dim); }
+nesting-section .live { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+scheduler-theatre { display: block; }
+scheduler-theatre .controls { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
+scheduler-theatre .actions { display: flex; gap: 0.5rem; align-items: center; }
+scheduler-theatre .fps { display: grid; grid-template-columns: 8px auto auto; gap: 0.4rem; align-items: center; font-family: var(--font-mono); font-size: 0.85rem; color: var(--secondary); }
+scheduler-theatre .dot { width: 8px; height: 8px; border-radius: 50%; }
+scheduler-theatre .fps em { color: var(--accent); font-style: normal; min-width: 3ch; text-align: right; }
+scheduler-theatre button { background: var(--bg-3); border: var(--border-width) solid var(--border); color: var(--white); padding: 0.5rem 1rem; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-size: 0.85rem; font-family: var(--font-mono); cursor: pointer; border-radius: var(--radius); }
+scheduler-theatre button:hover { background: var(--bg-5); border-color: var(--accent); color: var(--accent); }
+scheduler-theatre .stats { border-collapse: collapse; font-family: var(--font-mono); font-size: 0.8rem; }
+scheduler-theatre .stats th { color: var(--muted); font-weight: normal; padding: 0.2rem 0.5rem; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem; }
+scheduler-theatre .stats td { color: var(--accent); padding: 0.2rem 0.5rem; border-top: var(--border-width) solid var(--bg-5); }
+scheduler-theatre em { color: var(--accent); font-style: normal; }
+scheduler-theatre .graphs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+scheduler-theatre .scroll { height: 12rem; overflow-y: auto; overflow-anchor: auto; display: flex; flex-direction: column-reverse; background: rgb(3, 3, 3); border: var(--border-width) solid var(--bg-5); border-radius: 0px 0px 8px 8px; scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-2); }
+scheduler-theatre .scroll::-webkit-scrollbar { width: 10px; }
+scheduler-theatre .scroll::-webkit-scrollbar-track { background: var(--bg-2); border-radius: var(--radius-lg); }
+scheduler-theatre .scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px; border: 2px solid var(--bg-2); }
+scheduler-theatre .scroll::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+scheduler-theatre .anchor { overflow-anchor: auto; height: 1px; }
+scheduler-theatre .head { display: grid; grid-template-columns: 5ch 12ch 1fr; gap: 0px 1.5rem; padding: 0.65rem 1rem; background: var(--bg-2); color: var(--muted); font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; border-top-color: ; border-top-style: ; border-top-width: ; border-right-color: ; border-right-style: ; border-right-width: ; border-left-color: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-bottom: none; border-radius: 8px 8px 0px 0px; }
+scheduler-theatre .body { overflow-anchor: none; width: 100%; }
+scheduler-theatre .body > .row { display: grid; grid-template-columns: 5ch 12ch 1fr; gap: 0px 1.5rem; padding: 0.3rem 1rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text); border-bottom: var(--border-width) solid var(--bg-2); }
+scheduler-theatre .body > .row:nth-child(2n+1) { background: rgb(8, 8, 8); }
+scheduler-theatre .body > .row > :first-child { color: var(--accent); }
+scheduler-theatre .body > .row > :nth-child(3) { color: var(--muted); }
+scheduler-theatre-section { display: block; }
+scheduler-theatre-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+scheduler-theatre-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+scheduler-theatre-section .lede + .lede { margin-top: 0.75rem; }
+scheduler-theatre-section .lede + code-block { margin-top: 1rem; }
+scheduler-theatre-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+scheduler-theatre-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+scheduler-theatre-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+scheduler-theatre-section .host > code-block { margin-bottom: 1rem; }
+scheduler-theatre-section .host .ex { margin-top: 1rem; }
+scheduler-theatre-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+scheduler-theatre-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+scheduler-theatre-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+scheduler-theatre-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  scheduler-theatre-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+scheduler-theatre-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+scheduler-theatre-section .live > * { max-width: 100%; }
+scheduler-theatre-section .live { padding: 1.25rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+calendar-day { display: block; }
+calendar-day button { width: 100%; aspect-ratio: 1 / 1; background: transparent; border: var(--border-width) solid var(--bg-4); border-radius: var(--radius-sm); color: rgb(58, 58, 58); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-language-override: inherit; font-family: var(--font-mono); font-size: 0.85rem; cursor: pointer; padding: 0px; transition: background 0.08s, border-color 0.08s, color 0.08s; }
+calendar-day button:hover { border-color: rgb(58, 90, 136); color: var(--accent); }
+calendar-day button.in-month { color: rgb(187, 187, 187); }
+calendar-day button.selected { background: var(--accent); border-color: var(--accent); color: var(--black); font-weight: 700; box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 50%, transparent); }
+calendar-week { display: block; }
+calendar-week .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem; }
+calendar-grid { display: block; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); padding: 1rem; }
+calendar-grid .toolbar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: var(--border-width) solid var(--bg-4); }
+calendar-grid .title { flex: 1 1 0%; text-align: center; color: var(--white); font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em; }
+calendar-grid .nav { background: transparent; border: var(--border-width) solid var(--bg-6); color: var(--accent); width: 2rem; height: 2rem; border-radius: var(--radius-sm); font: inherit; cursor: pointer; }
+calendar-grid .nav:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+calendar-grid .slot-wrap { display: flex; gap: 0.4rem; }
+calendar-grid .dow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem; margin-bottom: 0.5rem; }
+calendar-grid .dow > div { text-align: center; font-family: var(--font-mono); color: var(--dim); font-size: 0.7rem; letter-spacing: 0.1em; padding: 0.3rem 0px; }
+calendar-grid .weeks { display: flex; flex-direction: column; gap: 0.25rem; }
+calendar-section { display: block; }
+calendar-section h1 { color: var(--white); font-size: 2rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 0.75rem; }
+calendar-section .lede { color: var(--secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 72ch; }
+calendar-section .lede + .lede { margin-top: 0.75rem; }
+calendar-section .lede + code-block { margin-top: 1rem; }
+calendar-section .inline { background: var(--bg-3); padding: 0.1rem 0.4rem; border-radius: 3px; font-size: 0.9em; color: var(--accent); overflow-wrap: anywhere; word-break: break-word; }
+calendar-section h2 { color: var(--white); font-size: 1.1rem; font-weight: 700; margin: 0px 0px 1rem; letter-spacing: 0.02em; }
+calendar-section .host { margin-top: 1.5rem; margin-bottom: 1.5rem; }
+calendar-section .host > code-block { margin-bottom: 1rem; }
+calendar-section .host .ex { margin-top: 1rem; }
+calendar-section .ex { margin-bottom: 1.5rem; padding: 1.25rem; background: var(--bg-2); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+calendar-section .note { color: var(--secondary); font-size: 0.9rem; line-height: 1.6; margin: 0px 0px 1rem; max-width: 72ch; }
+calendar-section .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 1rem; align-items: stretch; container-type: inline-size; }
+calendar-section .split > * { min-width: 0px; max-width: 100%; box-sizing: border-box; }
+@container (min-width: 576px) {
+  calendar-section .split > code-block .cb { display: flex; flex-direction: column; justify-content: center; align-items: safe center; }
+}
+calendar-section .live { padding: 1.5rem; background: var(--bg-1); border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); min-width: 0px; max-width: 100%; box-sizing: border-box; }
+calendar-section .live > * { max-width: 100%; }
+calendar-section { display: block; }
+calendar-section .depths { list-style: none; padding: 0px; margin: 0px; display: flex; flex-direction: column; gap: 0.5rem; color: var(--secondary); font-size: 0.9rem; line-height: 1.6; }
+calendar-section .depths li { padding: 0.6rem 0.8rem; background: var(--bg-1); border-left: 2px solid var(--navy); border-radius: 3px; }
+examples-page { display: flex; background: var(--black); min-height: 100vh; color: var(--text); box-sizing: border-box; }
+examples-page > .content { flex: 1 1 0px; min-width: 0px; box-sizing: border-box; padding: 6rem 1.25rem 4rem; }
+examples-page .intro { margin-bottom: 2.5rem; }
+examples-page h1 { color: var(--white); font-size: 2.5rem; font-weight: 900; letter-spacing: -1px; margin: 0px 0px 1rem; }
+examples-page .lede { color: var(--secondary); line-height: 1.7; max-width: 72ch; margin: 0px; }
+examples-page .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
+examples-page .reveal.revealed { opacity: 1; transform: none; }</style><script type="application/json" id="yaw-ssg-state">{"components":{"0":{"route":"/examples"},"1":{"label":"Examples","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"2":{"label":"Custom slider","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"3":{"label":"Reactive palette","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"4":{"label":"SVG signal meter","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"5":{"label":"Reactive graph","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"6":{"label":"Wave mixer","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"7":{"label":"Nesting example","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"8":{"label":"Scheduler theatre","childEntries":"[]","depth":"0","expanded":"false","active":"false"},"9":{"value":"50"},"10":{"syntax":"ts"},"11":{"syntax":"html"},"12":{"value":"50","min":"0","max":"100"},"13":{"syntax":"ts"},"14":{"syntax":"html"},"15":{"hue":"200","sat":"70","lit":"55"},"16":{"value":"200","min":"0","max":"360"},"17":{"value":"70","min":"0","max":"100"},"18":{"value":"55","min":"0","max":"100"},"19":{"strength":"65"},"20":{"syntax":"ts"},"21":{"syntax":"html"},"22":{"strength":"65","hueStart":"140","hueEnd":"340","lightness":"62","glow":"14"},"23":{"value":"65","min":"0","max":"100"},"24":{"graphConfig":"{\"walk\":{\"label\":\"random walk\",\"color\":\"#8af\"}}","graphSeries":"{}"},"25":{"syntax":"ts"},"26":{"syntax":"html"},"27":{"config":"{\"walk\":{\"label\":\"random walk\",\"color\":\"#8af\"}}","series":"{}"},"28":{"syntax":"ts"},"29":{"syntax":"html"},"30":{"freq1":"1","freq2":"1","freq3":"1","graphConfig":"{\"wave1\":{\"label\":\"wave 1\",\"color\":\"#f44\"},\"wave2\":{\"label\":\"wave 2\",\"color\":\"#4f4\"},\"wave3\":{\"label\":\"wave 3\",\"color\":\"#44f\"},\"sum\":{\"label\":\"sum\",\"color\":\"#fff\",\"width\":2}}","graphSeries":"{\"wave1\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.684062276342339,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751857,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743449,0.8306559326618259,0.8422735529643444,0.8535533905932737,0.8644843137107058,0.8750555348152298,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019718,0.9381533400219318,0.9455032620941839,0.9524135262330098,0.9588773128419905,0.9648882429441257,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975689,0.996057350657239,0.99778098230154,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.99778098230154,0.9960573506572389,0.9938441702975689,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441257,0.9588773128419906,0.9524135262330098,0.9455032620941839,0.9381533400219317,0.9303710135019718,0.9221639627510074,0.9135402871372811,0.9045084971874737,0.8950775061878453,0.8852566213878946,0.8750555348152298,0.8644843137107057,0.8535533905932737,0.8422735529643444,0.8306559326618259,0.8187119948743449,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894985,0.7545207078751857,0.7408768370508578,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.39092837930172875,0.37565505641757246,0.36050444698038536,0.34549150281252616,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.23208660251050178,0.21895831107393487,0.2061073738537635,0.19354647317351187,0.18128800512565518,0.16934406733817414,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.18128800512565518,0.19354647317351176,0.20610737385376332,0.21895831107393454,0.23208660251050184,0.2454792921248144,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.34549150281252616,0.3605044469803852,0.37565505641757235,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.4686047402353434,0.4842946204609358],\"wave2\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.684062276342339,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751857,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743449,0.8306559326618259,0.8422735529643444,0.8535533905932737,0.8644843137107058,0.8750555348152298,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019718,0.9381533400219318,0.9455032620941839,0.9524135262330098,0.9588773128419905,0.9648882429441257,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975689,0.996057350657239,0.99778098230154,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.99778098230154,0.9960573506572389,0.9938441702975689,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441257,0.9588773128419906,0.9524135262330098,0.9455032620941839,0.9381533400219317,0.9303710135019718,0.9221639627510074,0.9135402871372811,0.9045084971874737,0.8950775061878453,0.8852566213878946,0.8750555348152298,0.8644843137107057,0.8535533905932737,0.8422735529643444,0.8306559326618259,0.8187119948743449,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894985,0.7545207078751857,0.7408768370508578,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.39092837930172875,0.37565505641757246,0.36050444698038536,0.34549150281252616,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.23208660251050178,0.21895831107393487,0.2061073738537635,0.19354647317351187,0.18128800512565518,0.16934406733817414,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.18128800512565518,0.19354647317351176,0.20610737385376332,0.21895831107393454,0.23208660251050184,0.2454792921248144,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.34549150281252616,0.3605044469803852,0.37565505641757235,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.4686047402353434,0.4842946204609358],\"wave3\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.684062276342339,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751857,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743449,0.8306559326618259,0.8422735529643444,0.8535533905932737,0.8644843137107058,0.8750555348152298,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019718,0.9381533400219318,0.9455032620941839,0.9524135262330098,0.9588773128419905,0.9648882429441257,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975689,0.996057350657239,0.99778098230154,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.99778098230154,0.9960573506572389,0.9938441702975689,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441257,0.9588773128419906,0.9524135262330098,0.9455032620941839,0.9381533400219317,0.9303710135019718,0.9221639627510074,0.9135402871372811,0.9045084971874737,0.8950775061878453,0.8852566213878946,0.8750555348152298,0.8644843137107057,0.8535533905932737,0.8422735529643444,0.8306559326618259,0.8187119948743449,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894985,0.7545207078751857,0.7408768370508578,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.39092837930172875,0.37565505641757246,0.36050444698038536,0.34549150281252616,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.23208660251050178,0.21895831107393487,0.2061073738537635,0.19354647317351187,0.18128800512565518,0.16934406733817414,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.18128800512565518,0.19354647317351176,0.20610737385376332,0.21895831107393454,0.23208660251050184,0.2454792921248144,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.34549150281252616,0.3605044469803852,0.37565505641757235,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.4686047402353434,0.4842946204609358],\"sum\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.6840622763423388,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751858,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743448,0.8306559326618258,0.8422735529643445,0.8535533905932736,0.8644843137107058,0.8750555348152297,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019717,0.9381533400219318,0.9455032620941838,0.9524135262330097,0.9588773128419904,0.9648882429441258,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975688,0.9960573506572391,0.9977809823015399,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.9977809823015399,0.9960573506572389,0.9938441702975688,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441258,0.9588773128419906,0.9524135262330097,0.9455032620941838,0.9381533400219317,0.9303710135019717,0.9221639627510075,0.913540287137281,0.9045084971874737,0.8950775061878454,0.8852566213878946,0.8750555348152297,0.8644843137107058,0.8535533905932736,0.8422735529643445,0.8306559326618258,0.8187119948743448,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894986,0.7545207078751858,0.7408768370508577,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.3909283793017287,0.37565505641757246,0.36050444698038536,0.3454915028125261,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.2320866025105018,0.2189583110739349,0.20610737385376346,0.19354647317351184,0.1812880051256552,0.16934406733817417,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.1812880051256552,0.19354647317351178,0.20610737385376332,0.21895831107393451,0.23208660251050184,0.24547929212481442,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.3454915028125261,0.36050444698038514,0.3756550564175723,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.46860474023534343,0.4842946204609358]}"},"31":{"value":"1","min":"1","max":"20"},"32":{"value":"1","min":"1","max":"20"},"33":{"value":"1","min":"1","max":"20"},"34":{"config":"{\"wave1\":{\"label\":\"wave 1\",\"color\":\"#f44\"},\"wave2\":{\"label\":\"wave 2\",\"color\":\"#4f4\"},\"wave3\":{\"label\":\"wave 3\",\"color\":\"#44f\"},\"sum\":{\"label\":\"sum\",\"color\":\"#fff\",\"width\":2}}","series":"{\"wave1\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.684062276342339,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751857,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743449,0.8306559326618259,0.8422735529643444,0.8535533905932737,0.8644843137107058,0.8750555348152298,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019718,0.9381533400219318,0.9455032620941839,0.9524135262330098,0.9588773128419905,0.9648882429441257,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975689,0.996057350657239,0.99778098230154,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.99778098230154,0.9960573506572389,0.9938441702975689,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441257,0.9588773128419906,0.9524135262330098,0.9455032620941839,0.9381533400219317,0.9303710135019718,0.9221639627510074,0.9135402871372811,0.9045084971874737,0.8950775061878453,0.8852566213878946,0.8750555348152298,0.8644843137107057,0.8535533905932737,0.8422735529643444,0.8306559326618259,0.8187119948743449,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894985,0.7545207078751857,0.7408768370508578,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.39092837930172875,0.37565505641757246,0.36050444698038536,0.34549150281252616,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.23208660251050178,0.21895831107393487,0.2061073738537635,0.19354647317351187,0.18128800512565518,0.16934406733817414,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.18128800512565518,0.19354647317351176,0.20610737385376332,0.21895831107393454,0.23208660251050184,0.2454792921248144,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.34549150281252616,0.3605044469803852,0.37565505641757235,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.4686047402353434,0.4842946204609358],\"wave2\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.684062276342339,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751857,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743449,0.8306559326618259,0.8422735529643444,0.8535533905932737,0.8644843137107058,0.8750555348152298,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019718,0.9381533400219318,0.9455032620941839,0.9524135262330098,0.9588773128419905,0.9648882429441257,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975689,0.996057350657239,0.99778098230154,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.99778098230154,0.9960573506572389,0.9938441702975689,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441257,0.9588773128419906,0.9524135262330098,0.9455032620941839,0.9381533400219317,0.9303710135019718,0.9221639627510074,0.9135402871372811,0.9045084971874737,0.8950775061878453,0.8852566213878946,0.8750555348152298,0.8644843137107057,0.8535533905932737,0.8422735529643444,0.8306559326618259,0.8187119948743449,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894985,0.7545207078751857,0.7408768370508578,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.39092837930172875,0.37565505641757246,0.36050444698038536,0.34549150281252616,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.23208660251050178,0.21895831107393487,0.2061073738537635,0.19354647317351187,0.18128800512565518,0.16934406733817414,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.18128800512565518,0.19354647317351176,0.20610737385376332,0.21895831107393454,0.23208660251050184,0.2454792921248144,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.34549150281252616,0.3605044469803852,0.37565505641757235,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.4686047402353434,0.4842946204609358],\"wave3\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.684062276342339,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751857,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743449,0.8306559326618259,0.8422735529643444,0.8535533905932737,0.8644843137107058,0.8750555348152298,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019718,0.9381533400219318,0.9455032620941839,0.9524135262330098,0.9588773128419905,0.9648882429441257,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975689,0.996057350657239,0.99778098230154,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.99778098230154,0.9960573506572389,0.9938441702975689,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441257,0.9588773128419906,0.9524135262330098,0.9455032620941839,0.9381533400219317,0.9303710135019718,0.9221639627510074,0.9135402871372811,0.9045084971874737,0.8950775061878453,0.8852566213878946,0.8750555348152298,0.8644843137107057,0.8535533905932737,0.8422735529643444,0.8306559326618259,0.8187119948743449,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894985,0.7545207078751857,0.7408768370508578,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.39092837930172875,0.37565505641757246,0.36050444698038536,0.34549150281252616,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.23208660251050178,0.21895831107393487,0.2061073738537635,0.19354647317351187,0.18128800512565518,0.16934406733817414,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.18128800512565518,0.19354647317351176,0.20610737385376332,0.21895831107393454,0.23208660251050184,0.2454792921248144,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.34549150281252616,0.3605044469803852,0.37565505641757235,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.4686047402353434,0.4842946204609358],\"sum\":[0.5,0.5157053795390641,0.5313952597646567,0.5470541566592572,0.5626666167821521,0.5782172325201155,0.5936906572928623,0.6090716206982713,0.6243449435824274,0.6394955530196147,0.6545084971874737,0.6693689601226457,0.6840622763423388,0.6985739453173903,0.7128896457825363,0.7269952498697734,0.7408768370508576,0.7545207078751858,0.7679133974894983,0.7810416889260653,0.7938926261462366,0.8064535268264882,0.8187119948743448,0.8306559326618258,0.8422735529643445,0.8535533905932736,0.8644843137107058,0.8750555348152297,0.8852566213878946,0.8950775061878451,0.9045084971874737,0.9135402871372809,0.9221639627510075,0.9303710135019717,0.9381533400219318,0.9455032620941838,0.9524135262330097,0.9588773128419904,0.9648882429441258,0.9704403844771128,0.9755282581475768,0.9801468428384714,0.9842915805643155,0.9879583809693737,0.9911436253643443,0.9938441702975688,0.9960573506572391,0.9977809823015399,0.9990133642141358,0.9997532801828658,1,0.9997532801828658,0.9990133642141358,0.9977809823015399,0.9960573506572389,0.9938441702975688,0.9911436253643443,0.9879583809693737,0.9842915805643155,0.9801468428384715,0.9755282581475768,0.9704403844771128,0.9648882429441258,0.9588773128419906,0.9524135262330097,0.9455032620941838,0.9381533400219317,0.9303710135019717,0.9221639627510075,0.913540287137281,0.9045084971874737,0.8950775061878454,0.8852566213878946,0.8750555348152297,0.8644843137107058,0.8535533905932736,0.8422735529643445,0.8306559326618258,0.8187119948743448,0.8064535268264882,0.7938926261462367,0.7810416889260652,0.7679133974894986,0.7545207078751858,0.7408768370508577,0.7269952498697734,0.7128896457825364,0.6985739453173903,0.6840622763423391,0.6693689601226457,0.6545084971874737,0.6394955530196146,0.6243449435824274,0.6090716206982711,0.5936906572928625,0.5782172325201155,0.5626666167821522,0.5470541566592572,0.5313952597646567,0.5157053795390641,0.5000000000000001,0.484294620460936,0.4686047402353433,0.45294584334074295,0.43733338321784787,0.42178276747988463,0.4063093427071376,0.3909283793017287,0.37565505641757246,0.36050444698038536,0.3454915028125261,0.33063103987735426,0.3159377236576608,0.30142605468260997,0.2871103542174639,0.27300475013022685,0.2591231629491425,0.24547929212481456,0.2320866025105018,0.2189583110739349,0.20610737385376346,0.19354647317351184,0.1812880051256552,0.16934406733817417,0.15772644703565564,0.14644660940672627,0.13551568628929433,0.12494446518477026,0.11474337861210532,0.1049224938121548,0.09549150281252633,0.0864597128627192,0.07783603724899235,0.06962898649802812,0.06184665997806821,0.054496737905816106,0.0475864737669901,0.041122687158009374,0.03511175705587444,0.02955961552288744,0.024471741852423234,0.019853157161528523,0.015708419435684517,0.012041619030626394,0.00885637463565564,0.00615582970243117,0.0039426493427611176,0.002219017698460002,0.0009866357858642205,0.0002467198171342,0,0.0002467198171342,0.0009866357858642205,0.002219017698460002,0.003942649342761062,0.006155829702431115,0.00885637463565564,0.012041619030626338,0.015708419435684462,0.019853157161528467,0.02447174185242318,0.029559615522887328,0.03511175705587438,0.04112268715800926,0.047586473766990045,0.05449673790581605,0.0618466599780681,0.06962898649802801,0.07783603724899224,0.08645971286271908,0.09549150281252622,0.10492249381215468,0.1147433786121052,0.12494446518477026,0.13551568628929422,0.14644660940672616,0.15772644703565553,0.16934406733817386,0.1812880051256552,0.19354647317351178,0.20610737385376332,0.21895831107393451,0.23208660251050184,0.24547929212481442,0.25912316294914234,0.2730047501302265,0.2871103542174639,0.30142605468260986,0.31593772365766065,0.33063103987735387,0.3454915028125261,0.36050444698038514,0.3756550564175723,0.39092837930172836,0.40630934270713764,0.4217827674798844,0.43733338321784765,0.45294584334074256,0.46860474023534343,0.4842946204609358]}"},"35":{"count":"0","accent":"#050505"},"36":{"syntax":"ts"},"37":{"syntax":"ts"},"38":{"syntax":"html"},"39":{"syntax":"ts"},"40":{"accent":"#050505","blend":"false"},"41":{"syntax":"ts"},"42":{"syntax":"html"},"43":{"count":"0","batch":"0","ips":"0","label":"flood","fps":"0","dotColor":"#555","fpsPoints":"[]","batchPoints":"[]","ipsPoints":"[]","fpsConfig":"{\"fps\":{\"label\":\"fps\",\"color\":\"#4f4\"}}","insertsConfig":"{\"batch\":{\"label\":\"inserts/frame\",\"color\":\"#fa4\"},\"ips\":{\"label\":\"inserts/s\",\"color\":\"#8af\"}}","fpsSeries":"{\"fps\":[]}","insertsSeries":"{\"batch\":[],\"ips\":[]}"},"44":{"config":"{\"fps\":{\"label\":\"fps\",\"color\":\"#4f4\"}}","series":"{\"fps\":[]}"},"45":{"config":"{\"batch\":{\"label\":\"inserts/frame\",\"color\":\"#fa4\"},\"ips\":{\"label\":\"inserts/s\",\"color\":\"#8af\"}}","series":"{\"batch\":[],\"ips\":[]}"}},"services":{"TocMenuService":{"open":"false","available":"[[\"/examples\",true]]"},"TocMenuItemsService":{"activeId":"","expandAll":"false","tree":"[{\"id\":\"intro\",\"label\":\"Examples\",\"depth\":0,\"childEntries\":[]},{\"id\":\"custom-slider\",\"label\":\"Custom slider\",\"depth\":0,\"childEntries\":[]},{\"id\":\"reactive-palette\",\"label\":\"Reactive palette\",\"depth\":0,\"childEntries\":[]},{\"id\":\"signal-meter\",\"label\":\"SVG signal meter\",\"depth\":0,\"childEntries\":[]},{\"id\":\"rx-graph\",\"label\":\"Reactive graph\",\"depth\":0,\"childEntries\":[]},{\"id\":\"wave-mixer\",\"label\":\"Wave mixer\",\"depth\":0,\"childEntries\":[]},{\"id\":\"nesting-example\",\"label\":\"Nesting example\",\"depth\":0,\"childEntries\":[]},{\"id\":\"scheduler-theatre\",\"label\":\"Scheduler theatre\",\"depth\":0,\"childEntries\":[]}]"}},"directives":{}}</script><script type="application/json" id="yaw-ssg-routes">["/","/showcase","/examples","/docs"]</script></head>
+<body data-ssg-ready="">
+
+
+<app-root data-rx-host="">
+        <nav-bar data-rx-host="" data-ssg-id="0">
+        <nav>
+            <a class="logo has-funnel" toc-menu-toggle=""><span class="logo-text">YAW</span></a>
+            <div class="links">
+                <a data-rx-bind-class-active="isActive('/')" data-rx-bind-on-click="navigateHome">Manifesto</a>
+                <a data-rx-bind-class-active="isActive('/showcase')" data-rx-bind-on-click="navigateShowcase">Showcase</a>
+                <a data-rx-bind-class-active="isActive('/docs')" data-rx-bind-on-click="navigateDocs">Docs</a>
+                <a data-rx-bind-class-active="isActive('/examples')" data-rx-bind-on-click="navigateExamples" class="active">Examples</a>
+            </div>
+        </nav>
+    </nav-bar>
+        <rx-router-outlet data-rx-host=""><examples-page data-rx-host="">
+        <toc-menu toc-menu-collapse="" data-rx-host="" style="flex-basis: 189px;">
+        <aside>
+            <nav rx-for="nodes by id">
+                <toc-menu-item data-rx-host="" id="intro" data-rx-key="intro" data-ssg-id="1">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Examples</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="custom-slider" data-rx-key="custom-slider" data-ssg-id="2">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Custom slider</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="reactive-palette" data-rx-key="reactive-palette" data-ssg-id="3">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Reactive palette</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="signal-meter" data-rx-key="signal-meter" data-ssg-id="4">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">SVG signal meter</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="rx-graph" data-rx-key="rx-graph" data-ssg-id="5">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Reactive graph</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="wave-mixer" data-rx-key="wave-mixer" data-ssg-id="6">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Wave mixer</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="nesting-example" data-rx-key="nesting-example" data-ssg-id="7">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Nesting example</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            
+                <toc-menu-item data-rx-host="" id="scheduler-theatre" data-rx-key="scheduler-theatre" data-ssg-id="8">
+        <a data-rx-bind-class-active="active" data-rx-bind-on-click="goto(id)"><span data-rx-bind-text="label">Scheduler theatre</span></a>
+        <div class="children" data-rx-bind-class-expanded="expanded">
+            <div rx-for="childEntries by id"></div>
+        </div>
+    </toc-menu-item>
+            </nav>
+        </aside>
+    </toc-menu>
+        <main class="content">
+            <header class="intro" toc-section="intro" style="--toc-depth: 0;">
+                <h1 toc-anchor="intro" style="scroll-margin-top: 80px;">Examples</h1>
+                <p class="lede">Small, real components — each exercising one piece of
+                   the framework. Every example includes the full source, a live
+                   instance running beside it, and links back to the
+                   <a href="/docs">documentation</a> that explains the mechanisms
+                   involved.</p>
+            </header>
+
+            <slider-section toc-section="custom-slider" data-rx-host="" data-ssg-id="9" style="--toc-depth: 0;">
+        <h1 toc-anchor="custom-slider" style="scroll-margin-top: 80px;">Custom slider</h1>
+        <p class="lede">A custom slider built from DOM pointer events —
+           <code class="inline">pointerdown</code>,
+           <code class="inline">pointermove</code>, and
+           <code class="inline">pointerup</code> track the user's drag gesture.
+           Two CSS <code class="inline">[style]</code> bindings position the fill
+           and the thumb. The parent communicates with the slider through
+           a single <a href="/docs/components/bindings/data">tap binding</a>,
+           <code class="inline">[(value)]="propName"</code>, which pushes
+           the slider's value into the parent's field whenever it changes.</p>
+
+        <section class="host">
+            <h2>The slider component</h2>
+            <p class="note">Three <a href="/docs/components/state"><code class="inline">@state</code></a> fields —
+               <code class="inline">value</code>,
+               <code class="inline">min</code>, and
+               <code class="inline">max</code>.
+               <code class="inline">grab</code> captures the pointer,
+               <code class="inline">drag</code> normalises the cursor position into
+               a value between min and max, and
+               <code class="inline">release</code> lets go. Two derived getters
+               (<code class="inline">fillStyle$</code> and
+               <code class="inline">thumbStyle$</code>) map the current value to
+               CSS <code class="inline">width</code> and
+               <code class="inline">left</code> percentages that the template's
+               <a href="/docs/components/bindings">[style] bindings</a> apply
+               directly to the track elements.</p>
+            <code-block syntax="ts" data-rx-host="" data-ssg-id="10"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'yaw-slider'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+    &lt;div class="track"
+         onpointerdown="grab($event)"
+         onpointermove="drag($event)"
+         onpointerup="release($event)"&gt;
+        &lt;div class="fill" [style]="fillStyle"&gt;&lt;/div&gt;
+        &lt;div class="thumb" [style]="thumbStyle"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+`</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+    :host { display: block; padding: 0.5rem 0.6rem; }
+    .track { position: relative; height: 0.5rem; background: var(--bg-5);
+             border: var(--border-width) solid var(--bg-6); border-radius: 1rem;
+             cursor: pointer; touch-action: none; user-select: none; }
+    .fill { position: absolute; top: 0; bottom: 0; left: 0;
+            background: linear-gradient(90deg, #557 0%, var(--accent) 100%);
+            border-radius: 1rem; pointer-events: none; }
+    .thumb { position: absolute; top: 50%;
+             width: 1.2rem; height: 1.2rem;
+             background: var(--white); border: 2px solid var(--accent); border-radius: 50%;
+             transform: translate(-50%, -50%);
+             box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 55%, transparent);
+             pointer-events: none;
+             transition: box-shadow 0.15s ease; }
+    .track:active .thumb { box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 90%, transparent); }
+`</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">YawSlider</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">value</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">min</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">max</span> = <span class="tk-number">100</span>;
+
+    <span class="tk-fn">grab</span>(<span class="tk-ident">e</span>: <span class="tk-type">PointerEvent</span>): <span class="tk-keyword">void</span> {
+        (<span class="tk-ident">e</span>.<span class="tk-ident">currentTarget</span> <span class="tk-keyword">as</span> <span class="tk-type">Element</span>).<span class="tk-fn">setPointerCapture</span>(<span class="tk-ident">e</span>.<span class="tk-ident">pointerId</span>);
+        <span class="tk-keyword">this</span>.<span class="tk-fn">apply</span>(<span class="tk-ident">e</span>);
+    }
+    <span class="tk-fn">drag</span>(<span class="tk-ident">e</span>: <span class="tk-type">PointerEvent</span>): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">if</span> ((<span class="tk-ident">e</span>.<span class="tk-ident">currentTarget</span> <span class="tk-keyword">as</span> <span class="tk-type">Element</span>).<span class="tk-fn">hasPointerCapture</span>(<span class="tk-ident">e</span>.<span class="tk-ident">pointerId</span>)) <span class="tk-keyword">this</span>.<span class="tk-fn">apply</span>(<span class="tk-ident">e</span>);
+    }
+    <span class="tk-fn">release</span>(<span class="tk-ident">e</span>: <span class="tk-type">PointerEvent</span>): <span class="tk-keyword">void</span> {
+        (<span class="tk-ident">e</span>.<span class="tk-ident">currentTarget</span> <span class="tk-keyword">as</span> <span class="tk-type">Element</span>).<span class="tk-fn">releasePointerCapture</span>(<span class="tk-ident">e</span>.<span class="tk-ident">pointerId</span>);
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">apply</span>(<span class="tk-ident">e</span>: <span class="tk-type">PointerEvent</span>): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">rect</span> = (<span class="tk-ident">e</span>.<span class="tk-ident">currentTarget</span> <span class="tk-keyword">as</span> <span class="tk-type">Element</span>).<span class="tk-fn">getBoundingClientRect</span>();
+        <span class="tk-keyword">const</span> <span class="tk-ident">pct</span> = <span class="tk-type">Math</span>.<span class="tk-fn">max</span>(<span class="tk-number">0</span>, <span class="tk-type">Math</span>.<span class="tk-fn">min</span>(<span class="tk-number">1</span>, (<span class="tk-ident">e</span>.<span class="tk-ident">clientX</span> - <span class="tk-ident">rect</span>.<span class="tk-ident">left</span>) / <span class="tk-ident">rect</span>.<span class="tk-ident">width</span>));
+        <span class="tk-keyword">this</span>.<span class="tk-ident">value</span> = <span class="tk-type">Math</span>.<span class="tk-fn">round</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">min</span> + <span class="tk-ident">pct</span> * (<span class="tk-keyword">this</span>.<span class="tk-ident">max</span> - <span class="tk-keyword">this</span>.<span class="tk-ident">min</span>));
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">ratio</span>(<span class="tk-ident">v</span>: <span class="tk-ident">number</span>): <span class="tk-ident">number</span> { <span class="tk-keyword">return</span> (<span class="tk-ident">v</span> - <span class="tk-keyword">this</span>.<span class="tk-ident">min</span>) / (<span class="tk-keyword">this</span>.<span class="tk-ident">max</span> - <span class="tk-keyword">this</span>.<span class="tk-ident">min</span>); }
+    <span class="tk-ident">get</span> <span class="tk-fn">fillStyle$</span>(): <span class="tk-type">Observable</span>&lt;<span class="tk-ident">string</span>&gt;  { <span class="tk-keyword">return</span> <span class="tk-keyword">this</span>.<span class="tk-ident">value$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">v</span>) =&gt; <span class="tk-string">`width: ${this.ratio(v) * 100}%`</span>)); }
+    <span class="tk-ident">get</span> <span class="tk-fn">thumbStyle$</span>(): <span class="tk-type">Observable</span>&lt;<span class="tk-ident">string</span>&gt; { <span class="tk-keyword">return</span> <span class="tk-keyword">this</span>.<span class="tk-ident">value$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">v</span>) =&gt; <span class="tk-string">`left: ${this.ratio(v) * 100}%`</span>)); }
+}</code></pre></code-block>
+        </section>
+
+        <section class="ex">
+            <h2>In use</h2>
+            <p class="note">Declare an <code class="inline">@state</code> field on the
+               parent and bind it with
+               <code class="inline">[(value)]="prop"</code>. Drag the
+               thumb and the text binding below updates in real time.</p>
+            <div class="split">
+                <code-block syntax="html" data-rx-host="" data-ssg-id="11"><pre class="cb"><code><span class="tk-punct">&lt;</span><span class="tk-tag">yaw-slider</span> <span class="tk-attr">[(value)]</span>=<span class="tk-string">"value"</span> <span class="tk-attr">min</span>=<span class="tk-string">"0"</span> <span class="tk-attr">max</span>=<span class="tk-string">"100"</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">yaw-slider</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">p</span><span class="tk-punct">&gt;</span>value = {{value}}<span class="tk-punct">&lt;/</span><span class="tk-tag">p</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+                <div class="live">
+                    <yaw-slider min="0" max="100" data-rx-bind-tap-value="value" data-rx-host="" data-ssg-id="12">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 50%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 50%;"></div>
+    </div>
+</yaw-slider>
+                    <p class="state">value = <span class="status"><span data-rx-bind-text="value">50</span></span></p>
+                </div>
+            </div>
+        </section>
+    </slider-section>
+            <color-playground-section toc-section="reactive-palette" data-rx-host="" style="--toc-depth: 0;">
+        <h1 toc-anchor="reactive-palette" style="scroll-margin-top: 80px;">Reactive palette</h1>
+        <p class="lede">A colour palette built from three
+           <a href="/docs/components/state"><code class="inline">@state</code></a>
+           fields — <code class="inline">hue</code>,
+           <code class="inline">sat</code>, and
+           <code class="inline">lit</code> — representing a colour in the HSL
+           colour space. Each field is bound to a
+           <code class="inline">&lt;yaw-slider&gt;</code> through a
+           <a href="/docs/components/bindings/data">tap binding</a>. A single
+           <a href="/docs/components/bindings">[style] binding</a> applies the
+           combined colour as a CSS <code class="inline">background</code> to the
+           swatch element.</p>
+
+        <section class="host">
+            <h2>The palette component</h2>
+            <p class="note">Each slider's
+               <code class="inline">[(value)]="fieldName"</code>
+               tap binding writes one
+               <a href="/docs/components/state/dollar"><code class="inline">$</code> stream</a>.
+               The derived getter <code class="inline">css$</code> joins all three
+               streams with <code class="inline">combineLatest</code> and maps the
+               result to an <code class="inline">hsl(...)</code> string.
+               <code class="inline">swatchStyle$</code> wraps that string in a
+               <code class="inline">background:</code> declaration that the
+               template's <code class="inline">[style]</code> binding reads.</p>
+            <code-block syntax="ts" data-rx-host="" data-ssg-id="13"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'color-playground'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+    &lt;label&gt;H &lt;em&gt;{{hue}}°&lt;/em&gt;&lt;/label&gt;
+    &lt;yaw-slider [(value)]="hue" min="0" max="360"&gt;&lt;/yaw-slider&gt;
+
+    &lt;label&gt;S &lt;em&gt;{{sat}}%&lt;/em&gt;&lt;/label&gt;
+    &lt;yaw-slider [(value)]="sat" min="0" max="100"&gt;&lt;/yaw-slider&gt;
+
+    &lt;label&gt;L &lt;em&gt;{{lit}}%&lt;/em&gt;&lt;/label&gt;
+    &lt;yaw-slider [(value)]="lit" min="0" max="100"&gt;&lt;/yaw-slider&gt;
+
+    &lt;code class="out"&gt;{{css}}&lt;/code&gt;
+    &lt;div class="swatch" [style]="swatchStyle"&gt;&lt;/div&gt;
+`</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+    :host { display: grid; grid-template-columns: auto 1fr;
+            gap: 0.75rem 1rem; align-items: center; }
+    label { color: var(--secondary); font-size: 0.8rem;
+            font-family: var(--font-mono); text-transform: uppercase;
+            letter-spacing: var(--tracking); }
+    em { color: var(--accent); font-style: normal;
+         display: inline-block; width: 4ch; text-align: right; }
+    .out { grid-column: 1 / -1; background: var(--bg-2); padding: 0.6rem 0.75rem;
+           border-radius: var(--radius-sm); color: var(--accent); font-family: var(--font-mono);
+           font-size: 0.8rem; border: var(--border-width) solid var(--bg-5); }
+    .swatch { grid-column: 1 / -1; border-radius: var(--radius-lg); border: var(--border-width) solid var(--bg-5);
+              min-height: 6rem; box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.35);
+              transition: background 0.1s linear; }
+`</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">ColorPlayground</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">hue</span> = <span class="tk-number">200</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">sat</span> = <span class="tk-number">70</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">lit</span> = <span class="tk-number">55</span>;
+
+    <span class="tk-ident">get</span> <span class="tk-fn">css$</span>(): <span class="tk-type">Observable</span>&lt;<span class="tk-ident">string</span>&gt; {
+        <span class="tk-keyword">return</span> <span class="tk-fn">combineLatest</span>([<span class="tk-keyword">this</span>.<span class="tk-ident">hue$</span>, <span class="tk-keyword">this</span>.<span class="tk-ident">sat$</span>, <span class="tk-keyword">this</span>.<span class="tk-ident">lit$</span>]).<span class="tk-fn">pipe</span>(
+            <span class="tk-fn">map</span>(([<span class="tk-ident">h</span>, <span class="tk-ident">s</span>, <span class="tk-ident">l</span>]) =&gt; <span class="tk-string">`hsl(${h} ${s}% ${l}%)`</span>)
+        );
+    }
+
+    <span class="tk-ident">get</span> <span class="tk-fn">swatchStyle$</span>(): <span class="tk-type">Observable</span>&lt;<span class="tk-ident">string</span>&gt; {
+        <span class="tk-keyword">return</span> <span class="tk-keyword">this</span>.<span class="tk-ident">css$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">c</span>) =&gt; <span class="tk-string">`background: ${c}`</span>));
+    }
+}</code></pre></code-block>
+        </section>
+
+        <section class="ex">
+            <h2>HSL on three sliders</h2>
+            <p class="note">Drag any slider and the swatch colour changes in
+               real time.</p>
+            <div class="split">
+                <code-block syntax="html" data-rx-host="" data-ssg-id="14"><pre class="cb"><code><span class="tk-punct">&lt;</span><span class="tk-tag">color-playground</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">color-playground</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+                <div class="live"><color-playground data-rx-host="" data-ssg-id="15">
+    <label>H <em><span data-rx-bind-text="hue">200</span>°</em></label>
+    <yaw-slider min="0" max="360" data-rx-bind-tap-value="hue" data-rx-host="" data-ssg-id="16">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 55.5556%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 55.5556%;"></div>
+    </div>
+</yaw-slider>
+
+    <label>S <em><span data-rx-bind-text="sat">70</span>%</em></label>
+    <yaw-slider min="0" max="100" data-rx-bind-tap-value="sat" data-rx-host="" data-ssg-id="17">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 70%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 70%;"></div>
+    </div>
+</yaw-slider>
+
+    <label>L <em><span data-rx-bind-text="lit">55</span>%</em></label>
+    <yaw-slider min="0" max="100" data-rx-bind-tap-value="lit" data-rx-host="" data-ssg-id="18">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 55%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 55%;"></div>
+    </div>
+</yaw-slider>
+
+    <code class="out"><span data-rx-bind-text="css">hsl(200 70% 55%)</span></code>
+    <div class="swatch" data-rx-bind-prop-style="swatchStyle" style="background: rgb(60, 167, 221);"></div>
+</color-playground></div>
+            </div>
+        </section>
+    </color-playground-section>
+            <signal-meter-section toc-section="signal-meter" data-rx-host="" data-ssg-id="19" style="--toc-depth: 0;">
+        <h1 toc-anchor="signal-meter" style="scroll-margin-top: 80px;">SVG signal meter</h1>
+        <p class="lede">An SVG arc whose sweep, colour, and glow are all driven by
+           CSS custom properties. A single
+           <a href="/docs/components/bindings">[style] binding</a> writes four
+           custom properties to the host element, and CSS does the rest — the
+           SVG's <code class="inline">stroke-dashoffset</code> and
+           <code class="inline">stroke</code> colour both reference those
+           properties directly.</p>
+
+        <section class="host">
+            <h2>The meter component</h2>
+            <p class="note">Five
+               <a href="/docs/components/state"><code class="inline">@state</code></a>
+               fields —
+               <code class="inline">strength</code>,
+               <code class="inline">hueStart</code>,
+               <code class="inline">hueEnd</code>,
+               <code class="inline">lightness</code>, and
+               <code class="inline">glow</code> — each settable via an attribute
+               binding from the parent. The derived getter
+               <code class="inline">meterStyle$</code> joins all five
+               <a href="/docs/components/state/dollar"><code class="inline">$</code> streams</a>
+               with <code class="inline">combineLatest</code> and maps them to four
+               CSS custom properties
+               (<code class="inline">--pct</code>,
+               <code class="inline">--hue</code>,
+               <code class="inline">--lit</code>,
+               <code class="inline">--glow</code>) that the SVG template
+               references in its inline styles.</p>
+            <code-block syntax="ts" data-rx-host="" data-ssg-id="20"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'signal-meter'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+    &lt;div class="meter" [style]="meterStyle"&gt;
+        &lt;svg viewBox="0 0 100 100" class="ring"&gt;
+            &lt;circle cx="50" cy="50" r="42" class="track"&gt;&lt;/circle&gt;
+            &lt;circle cx="50" cy="50" r="42" class="fill"&gt;&lt;/circle&gt;
+        &lt;/svg&gt;
+        &lt;div class="readout"&gt;
+            &lt;div class="value"&gt;{{strength}}&lt;/div&gt;
+            &lt;div class="unit"&gt;%&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+`</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+    :host { display: block; }
+    .meter { position: relative; width: 14rem; height: 14rem; }
+    .ring { width: 100%; height: 100%; transform: rotate(-90deg); overflow: visible; }
+    .track { fill: none; stroke: #161616; stroke-width: 6; }
+    .fill { fill: none; stroke-width: 7; stroke-linecap: round;
+            stroke-dasharray: 264;
+            stroke: hsl(var(--hue), 85%, var(--lit));
+            stroke-dashoffset: calc(264 - 264 * var(--pct, 0));
+            filter: drop-shadow(0 0 var(--glow) hsl(var(--hue), 90%, var(--lit))); }
+    .readout { position: absolute; inset: 0; display: flex;
+               align-items: center; justify-content: center;
+               gap: 0.2rem; pointer-events: none; }
+    .value { font-size: 2.8rem; font-weight: 800; font-family: var(--font-mono);
+             color: hsl(var(--hue), 90%, var(--lit));
+             text-shadow: 0 0 var(--glow) hsl(var(--hue), 90%, var(--lit)); }
+    .unit { font-size: 1rem; color: var(--dim); font-family: var(--font-mono); margin-top: 1rem; }
+`</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">SignalMeter</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">strength</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">hueStart</span> = <span class="tk-number">140</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">hueEnd</span> = <span class="tk-number">340</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">lightness</span> = <span class="tk-number">62</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">glow</span> = <span class="tk-number">14</span>;
+
+    <span class="tk-ident">get</span> <span class="tk-fn">meterStyle$</span>(): <span class="tk-type">Observable</span>&lt;<span class="tk-ident">string</span>&gt; {
+        <span class="tk-keyword">return</span> <span class="tk-fn">combineLatest</span>([<span class="tk-keyword">this</span>.<span class="tk-ident">strength$</span>, <span class="tk-keyword">this</span>.<span class="tk-ident">hueStart$</span>, <span class="tk-keyword">this</span>.<span class="tk-ident">hueEnd$</span>, <span class="tk-keyword">this</span>.<span class="tk-ident">lightness$</span>, <span class="tk-keyword">this</span>.<span class="tk-ident">glow$</span>]).<span class="tk-fn">pipe</span>(
+            <span class="tk-fn">map</span>(([<span class="tk-ident">s</span>, <span class="tk-ident">start</span>, <span class="tk-ident">end</span>, <span class="tk-ident">lit</span>, <span class="tk-ident">glow</span>]) =&gt; {
+                <span class="tk-keyword">const</span> <span class="tk-ident">pct</span> = <span class="tk-ident">s</span> / <span class="tk-number">100</span>;
+                <span class="tk-keyword">const</span> <span class="tk-ident">hue</span> = <span class="tk-ident">start</span> + <span class="tk-ident">pct</span> * (<span class="tk-ident">end</span> - <span class="tk-ident">start</span>);
+                <span class="tk-keyword">return</span> <span class="tk-string">`--pct: ${pct}; --hue: ${hue}; --lit: ${lit}%; --glow: ${glow}px`</span>;
+            }),
+        );
+    }
+}</code></pre></code-block>
+        </section>
+
+        <section class="ex">
+            <h2>Drag to modulate</h2>
+            <p class="note">Drag the slider and the arc sweeps, the hue rotates,
+               and the glow follows — all from a single
+               <code class="inline">strength</code> value flowing through the
+               component's reactive chain into CSS.</p>
+            <div class="split">
+                <code-block syntax="html" data-rx-host="" data-ssg-id="21"><pre class="cb"><code><span class="tk-punct">&lt;</span><span class="tk-tag">signal-meter</span> <span class="tk-attr">strength</span>=<span class="tk-string">"65"</span> <span class="tk-attr">hueStart</span>=<span class="tk-string">"140"</span> <span class="tk-attr">hueEnd</span>=<span class="tk-string">"340"</span> <span class="tk-attr">lightness</span>=<span class="tk-string">"62"</span> <span class="tk-attr">glow</span>=<span class="tk-string">"14"</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">signal-meter</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+                <div class="live">
+                    <signal-meter data-rx-bind-prop-strength="strength" data-rx-host="" data-ssg-id="22">
+    <div class="meter" data-rx-bind-prop-style="meterStyle" style="--pct: 0.65; --hue: 270; --lit: 62%; --glow: 14px;">
+        <svg viewBox="0 0 100 100" class="ring">
+            <circle cx="50" cy="50" r="42" class="track"></circle>
+            <circle cx="50" cy="50" r="42" class="fill"></circle>
+        </svg>
+        <div class="readout">
+            <div class="value"><span data-rx-bind-text="strength">65</span></div>
+            <div class="unit">%</div>
+        </div>
+    </div>
+</signal-meter>
+                    <yaw-slider min="0" max="100" data-rx-bind-tap-value="strength" data-rx-host="" data-ssg-id="23">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 65%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 65%;"></div>
+    </div>
+</yaw-slider>
+                </div>
+            </div>
+        </section>
+    </signal-meter-section>
+            <!-- <calendar-section></calendar-section> -->
+            <graph-section toc-section="rx-graph" data-rx-host="" data-ssg-id="24" style="--toc-depth: 0;">
+        <h1 toc-anchor="rx-graph" style="scroll-margin-top: 80px;">Reactive graph</h1>
+        <p class="lede">A canvas-based graph component driven by
+           <code class="inline">Observable&lt;number[]&gt;</code> streams. The
+           parent passes named observables into the
+           <code class="inline">[series]</code>
+           <a href="/docs/components/bindings">property binding</a> and a
+           configuration record into <code class="inline">[config]</code> — the
+           graph draws itself as data arrives and redraws whenever a stream
+           emits.</p>
+
+        <section class="host">
+            <h2>The graph component</h2>
+            <p class="note">Two
+               <a href="/docs/components/state"><code class="inline">@state</code></a>
+               fields.
+               <code class="inline">config</code> is a record that maps series
+               names to labels and colours.
+               <code class="inline">series</code> is a record that maps series
+               names to <code class="inline">Observable&lt;number[]&gt;</code>
+               streams. When the parent writes a new
+               <code class="inline">series</code> map, the component unsubscribes
+               from every stream in the old map and subscribes to every stream in
+               the new one.</p>
+            <code-block syntax="ts" data-rx-host="" data-ssg-id="25"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'rx-graph'</span>,
+    <span class="tk-ident">directives</span>: [<span class="tk-type">RxFor</span>],
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+    &lt;div class="legend" rx-for="{ label, color } of legendItems by label"&gt;
+        &lt;span&gt;&lt;span class="dot" [style.background]="color"&gt;&lt;/span&gt;{{label}}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;canvas #canvas&gt;&lt;/canvas&gt;
+`</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+    :host { display: block; position: relative; }
+    .legend { position: absolute; top: 0.25rem; left: 0.4rem;
+              display: flex; flex-direction: column; gap: 0.1rem;
+              font-family: var(--font-mono); font-size: 0.55rem; color: var(--secondary);
+              text-transform: uppercase; letter-spacing: 0.06em; pointer-events: none;
+              background: rgba(3, 3, 3, 0.75); padding: 0.2rem 0.4rem; border-radius: var(--radius-sm); }
+    .legend span { display: flex; align-items: center; gap: 0.2rem; }
+    .legend .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; }
+    canvas { display: block; width: 100%; height: 6rem; background: #030303;
+             border: var(--border-width) solid var(--bg-5); border-radius: var(--radius-lg); }
+`</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">Graph</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">config</span>: <span class="tk-type">Record</span>&lt;<span class="tk-ident">string</span>, { <span class="tk-ident">label</span>: <span class="tk-ident">string</span>; <span class="tk-ident">color</span>: <span class="tk-ident">string</span>; <span class="tk-ident">width</span>?: <span class="tk-ident">number</span> }&gt; = {};
+    <span class="tk-decorator">@state</span> <span class="tk-ident">series</span>: <span class="tk-type">Record</span>&lt;<span class="tk-ident">string</span>, <span class="tk-type">Observable</span>&lt;<span class="tk-ident">number</span>[]&gt;&gt; = {};
+
+    <span class="tk-ident">canvas</span>!: <span class="tk-type">HTMLCanvasElement</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">ro</span>: <span class="tk-type">ResizeObserver</span> | <span class="tk-keyword">undefined</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">data</span> = <span class="tk-keyword">new</span> <span class="tk-type">Map</span>&lt;<span class="tk-ident">string</span>, <span class="tk-ident">number</span>[]&gt;();
+    <span class="tk-keyword">private</span> <span class="tk-ident">subs</span>: <span class="tk-type">Subscription</span>[] = [];
+
+    <span class="tk-ident">get</span> <span class="tk-fn">legendItems$</span>(): <span class="tk-type">Observable</span>&lt;{ <span class="tk-ident">label</span>: <span class="tk-ident">string</span>; <span class="tk-ident">color</span>: <span class="tk-ident">string</span> }[]&gt; {
+        <span class="tk-keyword">return</span> <span class="tk-keyword">this</span>.<span class="tk-ident">config$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>(<span class="tk-ident">cfg</span> =&gt; <span class="tk-type">Object</span>.<span class="tk-fn">values</span>(<span class="tk-ident">cfg</span>)));
+    }
+
+    <span class="tk-keyword">override</span> <span class="tk-fn">onRender</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">ro</span> = <span class="tk-keyword">new</span> <span class="tk-type">ResizeObserver</span>(() =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">resize</span>());
+        <span class="tk-keyword">this</span>.<span class="tk-ident">ro</span>.<span class="tk-fn">observe</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>);
+        <span class="tk-keyword">this</span>.<span class="tk-fn">resize</span>();
+        <span class="tk-keyword">this</span>.<span class="tk-ident">series$</span>.<span class="tk-fn">subscribe</span>((<span class="tk-ident">seriesMap</span>) =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">subscribeSeries</span>(<span class="tk-ident">seriesMap</span>));
+    }
+
+    <span class="tk-keyword">override</span> <span class="tk-fn">onDestroy</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">ro</span>?.<span class="tk-fn">disconnect</span>();
+        <span class="tk-keyword">this</span>.<span class="tk-ident">subs</span>.<span class="tk-fn">forEach</span>(<span class="tk-ident">s</span> =&gt; <span class="tk-ident">s</span>.<span class="tk-fn">unsubscribe</span>());
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">subscribeSeries</span>(<span class="tk-ident">seriesMap</span>: <span class="tk-type">Record</span>&lt;<span class="tk-ident">string</span>, <span class="tk-type">Observable</span>&lt;<span class="tk-ident">number</span>[]&gt;&gt;): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">subs</span>.<span class="tk-fn">forEach</span>(<span class="tk-ident">s</span> =&gt; <span class="tk-ident">s</span>.<span class="tk-fn">unsubscribe</span>());
+        <span class="tk-keyword">this</span>.<span class="tk-ident">subs</span> = [];
+        <span class="tk-keyword">this</span>.<span class="tk-ident">data</span>.<span class="tk-fn">clear</span>();
+        <span class="tk-keyword">for</span> (<span class="tk-keyword">const</span> [<span class="tk-ident">name</span>, <span class="tk-ident">obs$</span>] <span class="tk-keyword">of</span> <span class="tk-type">Object</span>.<span class="tk-fn">entries</span>(<span class="tk-ident">seriesMap</span>)) {
+            <span class="tk-keyword">this</span>.<span class="tk-ident">subs</span>.<span class="tk-fn">push</span>(<span class="tk-ident">obs$</span>.<span class="tk-fn">subscribe</span>((<span class="tk-ident">points</span>) =&gt; {
+                <span class="tk-keyword">this</span>.<span class="tk-ident">data</span>.<span class="tk-fn">set</span>(<span class="tk-ident">name</span>, <span class="tk-ident">points</span>);
+                <span class="tk-keyword">this</span>.<span class="tk-fn">draw</span>();
+            }));
+        }
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">resize</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-ident">width</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-ident">clientWidth</span> * <span class="tk-ident">devicePixelRatio</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-ident">height</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-ident">clientHeight</span> * <span class="tk-ident">devicePixelRatio</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-fn">draw</span>();
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">draw</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">ctx</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-fn">getContext</span>(<span class="tk-string">'2d'</span>);
+        <span class="tk-keyword">if</span> (!<span class="tk-ident">ctx</span>) <span class="tk-keyword">return</span>;
+        <span class="tk-keyword">const</span> <span class="tk-ident">w</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-ident">width</span>;
+        <span class="tk-keyword">const</span> <span class="tk-ident">h</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">canvas</span>.<span class="tk-ident">height</span>;
+        <span class="tk-ident">ctx</span>.<span class="tk-fn">clearRect</span>(<span class="tk-number">0</span>, <span class="tk-number">0</span>, <span class="tk-ident">w</span>, <span class="tk-ident">h</span>);
+
+        <span class="tk-keyword">const</span> <span class="tk-ident">names</span> = <span class="tk-type">Object</span>.<span class="tk-fn">keys</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">config</span>);
+        <span class="tk-keyword">const</span> <span class="tk-ident">maxLen</span> = <span class="tk-type">Math</span>.<span class="tk-fn">max</span>(<span class="tk-number">0</span>, ...<span class="tk-ident">names</span>.<span class="tk-fn">map</span>(<span class="tk-ident">n</span> =&gt; <span class="tk-keyword">this</span>.<span class="tk-ident">data</span>.<span class="tk-fn">get</span>(<span class="tk-ident">n</span>)?.<span class="tk-ident">length</span> ?? <span class="tk-number">0</span>));
+        <span class="tk-keyword">if</span> (<span class="tk-ident">maxLen</span> &lt; <span class="tk-number">2</span>) <span class="tk-keyword">return</span>;
+
+        <span class="tk-keyword">const</span> <span class="tk-ident">step</span> = <span class="tk-ident">w</span> / (<span class="tk-ident">maxLen</span> - <span class="tk-number">1</span>);
+
+        <span class="tk-keyword">for</span> (<span class="tk-keyword">const</span> <span class="tk-ident">name</span> <span class="tk-keyword">of</span> <span class="tk-ident">names</span>) {
+            <span class="tk-keyword">const</span> <span class="tk-ident">cfg</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">config</span>[<span class="tk-ident">name</span>];
+            <span class="tk-keyword">if</span> (!<span class="tk-ident">cfg</span>) <span class="tk-keyword">continue</span>;
+            <span class="tk-keyword">const</span> <span class="tk-ident">pts</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">data</span>.<span class="tk-fn">get</span>(<span class="tk-ident">name</span>) ?? [];
+            <span class="tk-keyword">if</span> (<span class="tk-ident">pts</span>.<span class="tk-ident">length</span> &lt; <span class="tk-number">2</span>) <span class="tk-keyword">continue</span>;
+
+            <span class="tk-keyword">const</span> <span class="tk-ident">pad</span> = <span class="tk-ident">maxLen</span> - <span class="tk-ident">pts</span>.<span class="tk-ident">length</span>;
+            <span class="tk-keyword">const</span> <span class="tk-ident">ceil</span> = <span class="tk-type">Math</span>.<span class="tk-fn">max</span>(<span class="tk-number">1</span>, ...<span class="tk-ident">pts</span>);
+
+            <span class="tk-ident">ctx</span>.<span class="tk-fn">beginPath</span>();
+            <span class="tk-keyword">for</span> (<span class="tk-keyword">let</span> <span class="tk-ident">i</span> = <span class="tk-number">0</span>; <span class="tk-ident">i</span> &lt; <span class="tk-ident">pts</span>.<span class="tk-ident">length</span>; <span class="tk-ident">i</span>++) {
+                <span class="tk-keyword">const</span> <span class="tk-ident">x</span> = (<span class="tk-ident">pad</span> + <span class="tk-ident">i</span>) * <span class="tk-ident">step</span>;
+                <span class="tk-keyword">const</span> <span class="tk-ident">y</span> = <span class="tk-ident">h</span> - (<span class="tk-ident">pts</span>[<span class="tk-ident">i</span>]! / <span class="tk-ident">ceil</span>) * <span class="tk-ident">h</span>;
+                <span class="tk-keyword">if</span> (<span class="tk-ident">i</span> === <span class="tk-number">0</span>) <span class="tk-ident">ctx</span>.<span class="tk-fn">moveTo</span>(<span class="tk-ident">x</span>, <span class="tk-ident">y</span>);
+                <span class="tk-keyword">else</span> <span class="tk-ident">ctx</span>.<span class="tk-fn">lineTo</span>(<span class="tk-ident">x</span>, <span class="tk-ident">y</span>);
+            }
+            <span class="tk-ident">ctx</span>.<span class="tk-ident">strokeStyle</span> = <span class="tk-ident">cfg</span>.<span class="tk-ident">color</span>;
+            <span class="tk-ident">ctx</span>.<span class="tk-ident">lineWidth</span> = (<span class="tk-ident">cfg</span>.<span class="tk-ident">width</span> ?? <span class="tk-number">1</span>) * <span class="tk-ident">devicePixelRatio</span>;
+            <span class="tk-ident">ctx</span>.<span class="tk-fn">stroke</span>();
+        }
+    }
+}</code></pre></code-block>
+        </section>
+
+        <section class="ex">
+            <h2>Live — random walk</h2>
+            <p class="note">The graph below is fed a single series built from
+               <code class="inline">interval</code> and
+               <code class="inline">scan</code> — a random walk that emits a new
+               point array every 80ms. The line draws itself as the data
+               arrives.</p>
+            <div class="split">
+                <code-block syntax="html" data-rx-host="" data-ssg-id="26"><pre class="cb"><code><span class="tk-punct">&lt;</span><span class="tk-tag">rx-graph</span> <span class="tk-attr">[config]</span>=<span class="tk-string">"config"</span> <span class="tk-attr">[series]</span>=<span class="tk-string">"series"</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">rx-graph</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+                <div class="live">
+                    <rx-graph data-rx-bind-prop-config="graphConfig" data-rx-bind-prop-series="graphSeries" data-rx-host="" data-ssg-id="27">
+    <div class="legend" rx-for="{ label, color } of legendItems by label">
+        <span data-rx-item="" data-rx-key="random walk"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(136, 170, 255);"></span><span data-rx-bind-text="label">random walk</span></span>
+    </div>
+    <canvas data-rx-bind-ref-canvas="canvas" width="279" height="94"></canvas>
+</rx-graph>
+                </div>
+            </div>
+        </section>
+    </graph-section>
+            <wave-mixer-section toc-section="wave-mixer" data-rx-host="" style="--toc-depth: 0;">
+        <h1 toc-anchor="wave-mixer" style="scroll-margin-top: 80px;">Wave mixer</h1>
+        <p class="lede">Three sine waves at different frequencies, mixed into a
+           summed wave and drawn on a single
+           <code class="inline">&lt;rx-graph&gt;</code>. Each slider controls
+           one frequency through a
+           <a href="/docs/components/bindings/data">tap binding</a>, and the graph
+           receives all four observable streams through a
+           <a href="/docs/components/bindings">[series] property binding</a>.</p>
+
+        <section class="host">
+            <h2>The wave mixer component</h2>
+            <p class="note">Three
+               <a href="/docs/components/state"><code class="inline">@state</code></a>
+               frequency fields —
+               <code class="inline">freq1</code>,
+               <code class="inline">freq2</code>, and
+               <code class="inline">freq3</code>. Each slider writes one of them
+               through a tap binding. In
+               <code class="inline">onInit</code>, each field's
+               <a href="/docs/components/state/dollar"><code class="inline">$</code> stream</a>
+               is piped through a <code class="inline">sine</code> function that
+               generates a 200-point array. A
+               <code class="inline">combineLatest</code> of all three produces the
+               summed wave. The resulting four observable streams are written into
+               the <code class="inline">graphSeries</code> record that the template
+               binds to
+               <code class="inline">&lt;rx-graph&gt;</code>.</p>
+            <code-block syntax="ts" data-rx-host="" data-ssg-id="28"><pre class="cb"><code><span class="tk-keyword">const</span> <span class="tk-const">POINTS</span> = <span class="tk-number">200</span>;
+
+<span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'wave-mixer'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+    &lt;div class="controls"&gt;
+        &lt;div class="row"&gt;
+            &lt;span class="label"&gt;wave 1&lt;/span&gt;
+            &lt;yaw-slider [(value)]="freq1" min="1" max="20"&gt;&lt;/yaw-slider&gt;
+            &lt;span class="readout"&gt;{{freq1}} Hz&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="row"&gt;
+            &lt;span class="label"&gt;wave 2&lt;/span&gt;
+            &lt;yaw-slider [(value)]="freq2" min="1" max="20"&gt;&lt;/yaw-slider&gt;
+            &lt;span class="readout"&gt;{{freq2}} Hz&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="row"&gt;
+            &lt;span class="label"&gt;wave 3&lt;/span&gt;
+            &lt;yaw-slider [(value)]="freq3" min="1" max="20"&gt;&lt;/yaw-slider&gt;
+            &lt;span class="readout"&gt;{{freq3}} Hz&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;rx-graph [config]="graphConfig" [series]="graphSeries"&gt;&lt;/rx-graph&gt;
+`</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+    :host { display: block; }
+    .controls { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .row { display: flex; gap: 0.3rem; align-items: center; }
+    .row yaw-slider { flex: 1; }
+    .label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+             text-transform: uppercase; letter-spacing: 0.06em; }
+    .readout { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); text-align: right; }
+    rx-graph { --canvas-height: 10rem; }
+    rx-graph canvas { height: 10rem; }
+`</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">WaveMixer</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">freq1</span> = <span class="tk-number">1</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">freq2</span> = <span class="tk-number">1</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">freq3</span> = <span class="tk-number">1</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">graphConfig</span> = {
+        <span class="tk-ident">wave1</span>: { <span class="tk-ident">label</span>: <span class="tk-string">'wave 1'</span>, <span class="tk-ident">color</span>: <span class="tk-string">'#f44'</span> },
+        <span class="tk-ident">wave2</span>: { <span class="tk-ident">label</span>: <span class="tk-string">'wave 2'</span>, <span class="tk-ident">color</span>: <span class="tk-string">'#4f4'</span> },
+        <span class="tk-ident">wave3</span>: { <span class="tk-ident">label</span>: <span class="tk-string">'wave 3'</span>, <span class="tk-ident">color</span>: <span class="tk-string">'#44f'</span> },
+        <span class="tk-ident">sum</span>:   { <span class="tk-ident">label</span>: <span class="tk-string">'sum'</span>,    <span class="tk-ident">color</span>: <span class="tk-string">'#fff'</span>, <span class="tk-ident">width</span>: <span class="tk-number">2</span> },
+    };
+    <span class="tk-decorator">@state</span> <span class="tk-ident">graphSeries</span>: <span class="tk-type">Record</span>&lt;<span class="tk-ident">string</span>, <span class="tk-type">Observable</span>&lt;<span class="tk-ident">number</span>[]&gt;&gt; = {};
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">sine</span>(<span class="tk-ident">freq</span>: <span class="tk-ident">number</span>): <span class="tk-ident">number</span>[] {
+        <span class="tk-keyword">const</span> <span class="tk-ident">pts</span>: <span class="tk-ident">number</span>[] = [];
+        <span class="tk-keyword">for</span> (<span class="tk-keyword">let</span> <span class="tk-ident">i</span> = <span class="tk-number">0</span>; <span class="tk-ident">i</span> &lt; <span class="tk-const">POINTS</span>; <span class="tk-ident">i</span>++) {
+            <span class="tk-ident">pts</span>.<span class="tk-fn">push</span>(<span class="tk-type">Math</span>.<span class="tk-fn">sin</span>(<span class="tk-number">2</span> * <span class="tk-type">Math</span>.<span class="tk-const">PI</span> * <span class="tk-ident">freq</span> * (<span class="tk-ident">i</span> / <span class="tk-const">POINTS</span>)) * <span class="tk-number">0.5</span> + <span class="tk-number">0.5</span>);
+        }
+        <span class="tk-keyword">return</span> <span class="tk-ident">pts</span>;
+    }
+
+    <span class="tk-keyword">override</span> <span class="tk-fn">onInit</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">wave1$</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">freq1$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">f</span>) =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">sine</span>(<span class="tk-ident">f</span>)));
+        <span class="tk-keyword">const</span> <span class="tk-ident">wave2$</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">freq2$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">f</span>) =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">sine</span>(<span class="tk-ident">f</span>)));
+        <span class="tk-keyword">const</span> <span class="tk-ident">wave3$</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">freq3$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">f</span>) =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">sine</span>(<span class="tk-ident">f</span>)));
+
+        <span class="tk-keyword">this</span>.<span class="tk-ident">graphSeries</span> = {
+            <span class="tk-ident">wave1</span>: <span class="tk-ident">wave1$</span>,
+            <span class="tk-ident">wave2</span>: <span class="tk-ident">wave2$</span>,
+            <span class="tk-ident">wave3</span>: <span class="tk-ident">wave3$</span>,
+            <span class="tk-ident">sum</span>: <span class="tk-fn">combineLatest</span>([<span class="tk-ident">wave1$</span>, <span class="tk-ident">wave2$</span>, <span class="tk-ident">wave3$</span>]).<span class="tk-fn">pipe</span>(
+                <span class="tk-fn">map</span>(([<span class="tk-ident">a</span>, <span class="tk-ident">b</span>, <span class="tk-ident">c</span>]) =&gt; <span class="tk-ident">a</span>.<span class="tk-fn">map</span>((<span class="tk-ident">v</span>, <span class="tk-ident">i</span>) =&gt; (<span class="tk-ident">v</span> + <span class="tk-ident">b</span>[<span class="tk-ident">i</span>]! + <span class="tk-ident">c</span>[<span class="tk-ident">i</span>]!) / <span class="tk-number">3</span>)),
+            ),
+        };
+    }
+}</code></pre></code-block>
+        </section>
+
+        <section class="ex">
+            <h2>Drag to modulate</h2>
+            <p class="note">Each slider controls one frequency. Drag it and the
+               corresponding sine wave recomputes, the sum recalculates, and the
+               graph redraws all four lines.</p>
+            <div class="split">
+                <code-block syntax="html" data-rx-host="" data-ssg-id="29"><pre class="cb"><code><span class="tk-punct">&lt;</span><span class="tk-tag">wave-mixer</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">wave-mixer</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+                <div class="live"><wave-mixer data-rx-host="" data-ssg-id="30">
+    <div class="controls">
+        <div class="row">
+            <span class="label">wave 1</span>
+            <yaw-slider min="1" max="20" data-rx-bind-tap-value="freq1" data-rx-host="" data-ssg-id="31">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 0%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 0%;"></div>
+    </div>
+</yaw-slider>
+            <span class="readout"><span data-rx-bind-text="freq1">1</span> Hz</span>
+        </div>
+        <div class="row">
+            <span class="label">wave 2</span>
+            <yaw-slider min="1" max="20" data-rx-bind-tap-value="freq2" data-rx-host="" data-ssg-id="32">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 0%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 0%;"></div>
+    </div>
+</yaw-slider>
+            <span class="readout"><span data-rx-bind-text="freq2">1</span> Hz</span>
+        </div>
+        <div class="row">
+            <span class="label">wave 3</span>
+            <yaw-slider min="1" max="20" data-rx-bind-tap-value="freq3" data-rx-host="" data-ssg-id="33">
+    <div class="track" data-rx-bind-on-pointerdown="grab($event)" data-rx-bind-on-pointermove="drag($event)" data-rx-bind-on-pointerup="release($event)">
+        <div class="fill" data-rx-bind-prop-style="fillStyle" style="width: 0%;"></div>
+        <div class="thumb" data-rx-bind-prop-style="thumbStyle" style="left: 0%;"></div>
+    </div>
+</yaw-slider>
+            <span class="readout"><span data-rx-bind-text="freq3">1</span> Hz</span>
+        </div>
+    </div>
+    <rx-graph data-rx-bind-prop-config="graphConfig" data-rx-bind-prop-series="graphSeries" data-rx-host="" data-ssg-id="34">
+    <div class="legend" rx-for="{ label, color } of legendItems by label">
+        <span data-rx-item="" data-rx-key="wave 1"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(255, 68, 68);"></span><span data-rx-bind-text="label">wave 1</span></span>
+    
+        <span data-rx-item="" data-rx-key="wave 2"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(68, 255, 68);"></span><span data-rx-bind-text="label">wave 2</span></span>
+    
+        <span data-rx-item="" data-rx-key="wave 3"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(68, 68, 255);"></span><span data-rx-bind-text="label">wave 3</span></span>
+    
+        <span data-rx-item="" data-rx-key="sum"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(255, 255, 255);"></span><span data-rx-bind-text="label">sum</span></span>
+    </div>
+    <canvas data-rx-bind-ref-canvas="canvas" width="279" height="158"></canvas>
+</rx-graph>
+</wave-mixer></div>
+            </div>
+        </section>
+    </wave-mixer-section>
+            <nesting-section toc-section="nesting-example" data-rx-host="" data-ssg-id="35" style="--toc-depth: 0;">
+        <div class="page">
+            <h1 toc-anchor="nesting-example" style="scroll-margin-top: 80px;">Nesting example</h1>
+
+            <p class="lede"><a href="/docs/components/bindings">Bindings</a> resolve
+               against the component whose template they're written in. Nesting depth
+               is irrelevant. A <code class="inline">&lt;div&gt;</code> wrapper,
+               a custom element wrapper, two custom element wrappers — doesn't matter.
+               If the binding is in your template, it resolves against you.</p>
+
+            <section class="host">
+                <h2><code class="inline">&lt;nested-level&gt;</code> — a stateless wrapper</h2>
+                <p class="note">A stateless wrapper that
+                   <a href="/docs/components/projection">projects</a> its children
+                   through a <code class="inline">&lt;slot&gt;</code> inside a
+                   dashed border and a label. It has no state and no behaviour — it
+                   exists to prove that wrapping bindings in a custom element doesn't
+                   redirect where they resolve. This component adds visual framing
+                   but introduces no scope boundary.</p>
+                <code-block syntax="ts" data-rx-host="" data-ssg-id="36"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'nested-level'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+        &lt;div class="nested"&gt;
+            &lt;div class="tag"&gt;nested scope&lt;/div&gt;
+            &lt;div class="content"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    `</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+        :host { display: block; }
+        .nested { border: 1px dashed var(--border); border-radius: var(--radius);
+                  padding: 0.5rem 0.75rem 0.6rem; margin: 0.3rem 0; background: #070707; }
+        .tag { color: var(--dim); font-size: 0.65rem; letter-spacing: var(--tracking);
+               text-transform: uppercase; margin-bottom: 0.4rem; }
+        .content { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+    `</span>
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">NestedLevel</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {}</code></pre></code-block>
+            </section>
+
+            <section class="host">
+                <h2><code class="inline">&lt;page-echo&gt;</code> — a component boundary</h2>
+                <p class="note">This <em>is</em> a
+                   <a href="/docs/components/bindings">component boundary</a>.
+                   Its bindings resolve against itself by default —
+                   its <a href="/docs/components/state"><code class="inline">@state</code></a> fields
+                   <code class="inline">blend</code> and
+                   <code class="inline">accent</code> are local. It assumes its host
+                   has a <code class="inline">count</code> field and an
+                   <code class="inline">increment</code> method, and uses
+                   <a href="/docs/components/paths/carets">caret bindings</a>
+                   to reach them
+                   (<code class="inline">^count</code>,
+                   <code class="inline">^increment(2)</code>). The tap binding
+                   <code class="inline">[(accent)]="accent"</code> writes
+                   in the opposite direction — when
+                   <code class="inline">[(accent)]</code> changes, the new
+                   value pushes into the host's
+                   <code class="inline">accent</code>.
+                   Wrapping in a stateless element doesn't change scope, but a component
+                   with its own template does — and carets are how you cross that
+                   boundary.</p>
+                <code-block syntax="ts" data-rx-host="" data-ssg-id="37"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'page-echo'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+        &lt;div class="echo" [class.blended]="blend"&gt;
+            &lt;div class="section"&gt;
+                &lt;div class="label"&gt;child template — caret prefix reaches the parent host&lt;/div&gt;
+                &lt;div class="body"&gt;
+                    &lt;div class="row"&gt;
+                        &lt;code&gt;&lt;span class="pre"&gt;^count&lt;/span&gt; {{ ^count }}&lt;/code&gt;
+                        &lt;span class="sep"&gt;·&lt;/span&gt;
+                        &lt;code&gt;&lt;span class="pre"&gt;^status&lt;/span&gt; {{ ^status }}&lt;/code&gt;
+                    &lt;/div&gt;
+                    &lt;div class="row"&gt;
+                        &lt;button onclick="^increment(2)"&gt;^increment(2)&lt;/button&gt;
+                        &lt;button onclick="^reset"&gt;^reset&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="section"&gt;
+                &lt;div class="label"&gt;local &lt;code class="inline"&gt;accent&lt;/code&gt; state pushes to the host via tap binding&lt;/div&gt;
+                &lt;div class="body"&gt;
+                    &lt;div class="row"&gt;
+                        &lt;code&gt;&lt;span class="pre"&gt;accent&lt;/span&gt; {{ accent }}&lt;/code&gt;
+                    &lt;/div&gt;
+                    &lt;div class="row"&gt;
+                        &lt;button onclick="cycleAccent" [style]="accentBtnStyle"&gt;accent&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="section"&gt;
+                &lt;div class="label"&gt;local &lt;code class="inline"&gt;blend&lt;/code&gt; state — stays in this component, never leaves&lt;/div&gt;
+                &lt;div class="body"&gt;
+                    &lt;div class="row"&gt;
+                        &lt;code&gt;&lt;span class="pre"&gt;blend&lt;/span&gt; {{ blend }}&lt;/code&gt;
+                    &lt;/div&gt;
+                    &lt;div class="row"&gt;
+                        &lt;button onclick="toggleBlend" [class.active]="blend"&gt;blend&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    `</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+        :host { display: block; }
+        .echo { background: #0a1128; border: var(--border-width) solid var(--navy); border-radius: var(--radius);
+                padding: 1rem; color: var(--accent); font-family: var(--font-mono); font-size: 0.85rem; }
+        .section + .section { margin-top: 1rem; }
+        .label { color: var(--slate); font-size: 0.7rem; letter-spacing: var(--tracking);
+                 text-transform: uppercase; margin-bottom: 0.5rem; }
+        .label code { color: var(--accent); font-size: inherit; }
+        .body { display: flex; flex-direction: column; gap: 0.4rem;
+                padding: 0.5rem 0.6rem; background: var(--bg-1);
+                border-radius: var(--radius-sm); }
+        .row { display: flex; gap: 0.5rem; align-items: center; }
+        .row code { color: var(--accent); background: transparent; padding: 0.35rem 0.4rem; }
+        .pre { color: var(--slate); }
+        .sep { color: #334; }
+        .row button { background: #0f1a3a; border: var(--border-width) solid var(--navy); color: var(--accent);
+                      padding: 0.35rem 0.7rem; font: inherit; font-size: 0.8rem;
+                      cursor: pointer; border-radius: var(--radius-sm); }
+        .row button:hover { background: #182555; color: var(--white); }
+        .row button.active { background: var(--navy); border-color: var(--accent); color: var(--white); }
+        .echo.blended { mix-blend-mode: difference; }
+    `</span>
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">PageEcho</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">accent</span> = <span class="tk-string">'#050505'</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">blend</span> = <span class="tk-keyword">false</span>;
+
+    <span class="tk-keyword">private</span> <span class="tk-keyword">readonly</span> <span class="tk-ident">accents</span> = [<span class="tk-string">'#050505'</span>, <span class="tk-string">'#0f2538'</span>, <span class="tk-string">'#250f28'</span>, <span class="tk-string">'#0f2510'</span>, <span class="tk-string">'#25200f'</span>, <span class="tk-string">'#280f0f'</span>, <span class="tk-string">'#0f0f28'</span>];
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">lighten</span>(<span class="tk-ident">hex</span>: <span class="tk-ident">string</span>, <span class="tk-ident">amount</span>: <span class="tk-ident">number</span>): <span class="tk-ident">string</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">c</span> = (<span class="tk-ident">o</span>: <span class="tk-ident">number</span>) =&gt; <span class="tk-type">Math</span>.<span class="tk-fn">min</span>(<span class="tk-number">255</span>, <span class="tk-fn">parseInt</span>(<span class="tk-ident">hex</span>.<span class="tk-fn">slice</span>(<span class="tk-ident">o</span>, <span class="tk-ident">o</span> + <span class="tk-number">2</span>), <span class="tk-number">16</span>) + <span class="tk-ident">amount</span>);
+        <span class="tk-keyword">return</span> <span class="tk-string">`rgb(${c(1)},${c(3)},${c(5)})`</span>;
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">contrastColor</span>(<span class="tk-ident">hex</span>: <span class="tk-ident">string</span>, <span class="tk-ident">amount</span>: <span class="tk-ident">number</span>): <span class="tk-ident">string</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">ch</span> = (<span class="tk-ident">o</span>: <span class="tk-ident">number</span>) =&gt; <span class="tk-type">Math</span>.<span class="tk-fn">min</span>(<span class="tk-number">255</span>, <span class="tk-fn">parseInt</span>(<span class="tk-ident">hex</span>.<span class="tk-fn">slice</span>(<span class="tk-ident">o</span>, <span class="tk-ident">o</span> + <span class="tk-number">2</span>), <span class="tk-number">16</span>) + <span class="tk-ident">amount</span>);
+        <span class="tk-keyword">const</span> <span class="tk-ident">lum</span> = (<span class="tk-number">0.299</span> * <span class="tk-fn">ch</span>(<span class="tk-number">1</span>) + <span class="tk-number">0.587</span> * <span class="tk-fn">ch</span>(<span class="tk-number">3</span>) + <span class="tk-number">0.114</span> * <span class="tk-fn">ch</span>(<span class="tk-number">5</span>)) / <span class="tk-number">255</span>;
+        <span class="tk-keyword">return</span> <span class="tk-ident">lum</span> &gt; <span class="tk-number">0.5</span> ? <span class="tk-string">'#050505'</span> : <span class="tk-string">'#f5f5f5'</span>;
+    }
+
+    <span class="tk-ident">get</span> <span class="tk-fn">accentBtnStyle$</span>() {
+        <span class="tk-keyword">return</span> <span class="tk-keyword">this</span>.<span class="tk-ident">accent$</span>.<span class="tk-fn">pipe</span>(
+            <span class="tk-fn">map</span>((<span class="tk-ident">a</span>) =&gt; ({ <span class="tk-ident">accent</span>: <span class="tk-ident">a</span>, <span class="tk-ident">bg</span>: <span class="tk-keyword">this</span>.<span class="tk-fn">lighten</span>(<span class="tk-ident">a</span>, <span class="tk-number">70</span>), <span class="tk-ident">fg</span>: <span class="tk-keyword">this</span>.<span class="tk-fn">contrastColor</span>(<span class="tk-ident">a</span>, <span class="tk-number">70</span>) })),
+            <span class="tk-fn">map</span>(({ <span class="tk-ident">accent</span>, <span class="tk-ident">bg</span>, <span class="tk-ident">fg</span> }) =&gt; <span class="tk-string">`border-color: ${accent}; color: ${fg}; background: ${bg}`</span>),
+        );
+    }
+
+    <span class="tk-fn">cycleAccent</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">i</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">accents</span>.<span class="tk-fn">indexOf</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">accent</span>);
+        <span class="tk-keyword">this</span>.<span class="tk-ident">accent</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">accents</span>[(<span class="tk-ident">i</span> + <span class="tk-number">1</span>) % <span class="tk-keyword">this</span>.<span class="tk-ident">accents</span>.<span class="tk-ident">length</span>]!;
+    }
+
+    <span class="tk-fn">toggleBlend</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">blend</span> = !<span class="tk-keyword">this</span>.<span class="tk-ident">blend</span>;
+    }
+}</code></pre></code-block>
+            </section>
+
+            <section class="host">
+                <h2><code class="inline">&lt;nesting-section&gt;</code> — the host template (<code class="inline">NESTING_TEMPLATE</code>)</h2>
+                <p class="note">The host template places buttons at three
+                   nesting depths. Some sit directly in the template, some are
+                   wrapped in one
+                   <code class="inline">&lt;nested-level&gt;</code>, and some
+                   are wrapped in two.
+                   All three groups
+                   <a href="/docs/components/paths">resolve against</a> this component
+                   because all three are written in its template. At the bottom,
+                   <code class="inline">&lt;page-echo [(accent)]="accent"&gt;</code>
+                   — when <code class="inline">&lt;page-echo&gt;</code>'s
+                   <code class="inline">[(accent)]</code> changes, the
+                   <a href="/docs/components/bindings/data">tap binding</a> pushes
+                   it into the host's <code class="inline">accent</code>.</p>
+                <code-block syntax="html" data-rx-host="" data-ssg-id="38"><pre class="cb"><code><span class="tk-comment">&lt;!-- depth 0: buttons sit directly in the host's template --&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">div</span> <span class="tk-attr">class</span>=<span class="tk-string">"buttons"</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"increment(1)"</span><span class="tk-punct">&gt;</span>+1<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"increment(-1)"</span><span class="tk-punct">&gt;</span>-1<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"reset"</span><span class="tk-punct">&gt;</span>reset<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;/</span><span class="tk-tag">div</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-string">"state"</span><span class="tk-punct">&gt;</span>count = {{count}} <span class="tk-punct">&lt;</span><span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-string">"status"</span><span class="tk-punct">&gt;</span>({{status}})<span class="tk-punct">&lt;/</span><span class="tk-tag">span</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">p</span><span class="tk-punct">&gt;</span>
+
+<span class="tk-comment">&lt;!-- depth 1: buttons wrapped in one &lt;nested-level&gt; --&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">nested-level</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"increment(5)"</span><span class="tk-punct">&gt;</span>+5<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"increment(-5)"</span><span class="tk-punct">&gt;</span>-5<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;/</span><span class="tk-tag">nested-level</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-string">"state"</span><span class="tk-punct">&gt;</span>count = {{count}} <span class="tk-punct">&lt;</span><span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-string">"status"</span><span class="tk-punct">&gt;</span>({{status}})<span class="tk-punct">&lt;/</span><span class="tk-tag">span</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">p</span><span class="tk-punct">&gt;</span>
+
+<span class="tk-comment">&lt;!-- depth 2: buttons wrapped in two &lt;nested-level&gt;s --&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">nested-level</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;</span><span class="tk-tag">nested-level</span><span class="tk-punct">&gt;</span>
+        <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"increment(10)"</span><span class="tk-punct">&gt;</span>+10<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+        <span class="tk-punct">&lt;</span><span class="tk-tag">button</span> <span class="tk-attr">onclick</span>=<span class="tk-string">"increment(100)"</span><span class="tk-punct">&gt;</span>+100<span class="tk-punct">&lt;/</span><span class="tk-tag">button</span><span class="tk-punct">&gt;</span>
+    <span class="tk-punct">&lt;/</span><span class="tk-tag">nested-level</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;/</span><span class="tk-tag">nested-level</span><span class="tk-punct">&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">p</span> <span class="tk-attr">class</span>=<span class="tk-string">"state"</span><span class="tk-punct">&gt;</span>count = {{count}} <span class="tk-punct">&lt;</span><span class="tk-tag">span</span> <span class="tk-attr">class</span>=<span class="tk-string">"status"</span><span class="tk-punct">&gt;</span>({{status}})<span class="tk-punct">&lt;/</span><span class="tk-tag">span</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">p</span><span class="tk-punct">&gt;</span>
+
+<span class="tk-comment">&lt;!-- page-echo: a separate component with its own template and state --&gt;</span>
+<span class="tk-punct">&lt;</span><span class="tk-tag">page-echo</span> <span class="tk-attr">[(accent)]</span>=<span class="tk-string">"accent"</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">page-echo</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+            </section>
+
+            <section class="host">
+                <h2><code class="inline">&lt;nesting-section&gt;</code> — the host class</h2>
+                <p class="note">The class owns all the state that the template and
+                   its children read. <code class="inline">count</code> and
+                   <code class="inline">accent</code> are
+                   <code class="inline">@state</code> fields — each one backs an
+                   observable stream that bindings subscribe to.
+                   <code class="inline">status$</code> is a derived getter that maps
+                   <code class="inline">count</code> to the strings
+                   "zero", "positive", or "negative".
+                   <code class="inline">increment</code> and
+                   <code class="inline">reset</code> are the methods that the
+                   template's <code class="inline">onclick</code> bindings call.</p>
+                <code-block syntax="ts" data-rx-host="" data-ssg-id="39"><pre class="cb"><code><span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'nesting-section'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-const">NESTING_TEMPLATE</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">NestingExample</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">count</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">accent</span> = <span class="tk-string">'#050505'</span>;
+
+    <span class="tk-ident">get</span> <span class="tk-fn">status$</span>(): <span class="tk-type">Observable</span>&lt;<span class="tk-ident">string</span>&gt; {
+        <span class="tk-keyword">return</span> <span class="tk-keyword">this</span>.<span class="tk-ident">count$</span>.<span class="tk-fn">pipe</span>(<span class="tk-fn">map</span>((<span class="tk-ident">c</span>) =&gt; {
+            <span class="tk-keyword">if</span> (<span class="tk-ident">c</span> === <span class="tk-number">0</span>) { <span class="tk-keyword">return</span> <span class="tk-string">'zero'</span>; }
+            <span class="tk-keyword">return</span> <span class="tk-ident">c</span> &gt; <span class="tk-number">0</span> ? <span class="tk-string">'positive'</span> : <span class="tk-string">'negative'</span>;
+        }));
+    }
+
+    <span class="tk-fn">increment</span>(<span class="tk-ident">amount</span>: <span class="tk-ident">number</span>): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">count</span> += <span class="tk-ident">amount</span>;
+    }
+
+    <span class="tk-fn">reset</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">count</span> = <span class="tk-number">0</span>;
+    }
+}</code></pre></code-block>
+            </section>
+
+            <section class="ex">
+                <h2>Live</h2>
+                <p class="note">All three components rendered together. The
+                   buttons at depth 0 sit directly in the
+                   <code class="inline">&lt;nesting-section&gt;</code> template.
+                   The buttons inside the dashed boxes are wrapped in one or two
+                   <code class="inline">&lt;nested-level&gt;</code> elements —
+                   but they still resolve against the host, so they read and write
+                   the same <code class="inline">count</code>. At the bottom,
+                   <code class="inline">&lt;page-echo&gt;</code> reaches
+                   <code class="inline">count</code> via carets, and its tap binding
+                   <code class="inline">[(accent)]="accent"</code> pushes
+                   <code class="inline">&lt;page-echo&gt;</code>'s
+                   <code class="inline">accent</code> into the host's
+                   <code class="inline">accent</code> — click the accent button to
+                   cycle the background.
+                   <code class="inline">blend</code> stays entirely inside
+                   <code class="inline">&lt;page-echo&gt;</code> and nothing
+                   outside sees it.</p>
+                <div class="live" data-rx-bind-style-background="accent" style="background: rgb(5, 5, 5);">
+<!-- depth 0: buttons sit directly in the host's template -->
+<div class="buttons">
+    <button data-rx-bind-on-click="increment(1)">+1</button>
+    <button data-rx-bind-on-click="increment(-1)">-1</button>
+    <button data-rx-bind-on-click="reset">reset</button>
+</div>
+<p class="state">count = <span data-rx-bind-text="count">0</span> <span class="status">(<span data-rx-bind-text="status">zero</span>)</span></p>
+
+<!-- depth 1: buttons wrapped in one <nested-level> -->
+<nested-level data-rx-host="">
+        <div class="nested">
+            <div class="tag">nested scope</div>
+            <div class="content">
+    <button data-rx-bind-on-click="^increment(5)">+5</button>
+    <button data-rx-bind-on-click="^increment(-5)">-5</button>
+</div>
+        </div>
+    </nested-level>
+<p class="state">count = <span data-rx-bind-text="count">0</span> <span class="status">(<span data-rx-bind-text="status">zero</span>)</span></p>
+
+<!-- depth 2: buttons wrapped in two <nested-level>s -->
+<nested-level data-rx-host="">
+        <div class="nested">
+            <div class="tag">nested scope</div>
+            <div class="content">
+    <nested-level data-rx-host="">
+        <div class="nested">
+            <div class="tag">nested scope</div>
+            <div class="content">
+        <button data-rx-bind-on-click="^^increment(10)">+10</button>
+        <button data-rx-bind-on-click="^^increment(100)">+100</button>
+    </div>
+        </div>
+    </nested-level>
+</div>
+        </div>
+    </nested-level>
+<p class="state">count = <span data-rx-bind-text="count">0</span> <span class="status">(<span data-rx-bind-text="status">zero</span>)</span></p>
+
+<!-- page-echo: a separate component with its own template and state -->
+<page-echo data-rx-bind-tap-accent="accent" data-rx-host="" data-ssg-id="40">
+        <div class="echo" data-rx-bind-class-blended="blend">
+            <div class="section">
+                <div class="label">child template — caret prefix reaches the parent host</div>
+                <div class="body">
+                    <div class="row">
+                        <code><span class="pre">^count</span> <span data-rx-bind-text=" ^count ">0</span></code>
+                        <span class="sep">·</span>
+                        <code><span class="pre">^status</span> <span data-rx-bind-text=" ^status ">zero</span></code>
+                    </div>
+                    <div class="row">
+                        <button data-rx-bind-on-click="^increment(2)">^increment(2)</button>
+                        <button data-rx-bind-on-click="^reset">^reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="label">local <code class="inline">accent</code> state pushes to the host via tap binding</div>
+                <div class="body">
+                    <div class="row">
+                        <code><span class="pre">accent</span> <span data-rx-bind-text=" accent ">#050505</span></code>
+                    </div>
+                    <div class="row">
+                        <button data-rx-bind-on-click="cycleAccent" data-rx-bind-prop-style="accentBtnStyle" style="border-color: rgb(5, 5, 5); color: rgb(245, 245, 245); background: rgb(75, 75, 75);">accent</button>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="label">local <code class="inline">blend</code> state — stays in this component, never leaves</div>
+                <div class="body">
+                    <div class="row">
+                        <code><span class="pre">blend</span> <span data-rx-bind-text=" blend ">false</span></code>
+                    </div>
+                    <div class="row">
+                        <button data-rx-bind-on-click="toggleBlend" data-rx-bind-class-active="blend">blend</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </page-echo>
+</div>
+            </section>
+        </div>
+    </nesting-section>
+            <scheduler-theatre-section toc-section="scheduler-theatre" data-rx-host="" style="--toc-depth: 0;">
+        <h1 toc-anchor="scheduler-theatre" style="scroll-margin-top: 80px;">Scheduler theatre</h1>
+        <p class="lede">Click flood to start inserting rows into a table. A proportional controller
+           measures frame rate and adjusts batch size per frame to try to maintain 60 fps. Watch the
+           graphs as elements pile up. FPS will sag
+           and the batch size shrink to compensate — this is a game it will quickly lose. The writes
+           haven't slowed down — <code class="inline">insertAdjacentHTML</code> is still
+           microseconds. Layout and paint got expensive. That cost lives in the browser's C++
+           layout engine, on the other side of a boundary no abstraction can cross.
+           No amount of diffing, batching, or dirty-checking will ever move that line.
+           The P controller in this demo is like any other popular framework. It reacts to the symptom,
+           backs off proportionally, and loses anyway.</p>
+
+        <p class="lede"><em>The framework could insert 10,000 rows in a blink without dropping
+           a frame. This demo throttles on purpose with heavy instrumentation to prove a point.</em></p>
+
+        <section class="host">
+            <code-block syntax="ts" data-rx-host="" data-ssg-id="41"><pre class="cb"><code><span class="tk-keyword">const</span> <span class="tk-const">TARGET_FPS</span> = <span class="tk-number">60</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">KP</span> = <span class="tk-number">0.4</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">FPS_WINDOW</span> = <span class="tk-number">30</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">IPS_WINDOW</span> = <span class="tk-number">10</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">MIN_BATCH</span> = <span class="tk-number">1</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">INITIAL_BATCH</span> = <span class="tk-number">16</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">GRAPH_POINTS</span> = <span class="tk-number">120</span>;
+<span class="tk-keyword">const</span> <span class="tk-const">GRAPH_SAMPLE_MS</span> = <span class="tk-number">90</span>;
+
+<span class="tk-decorator">@Component</span>({
+    <span class="tk-ident">selector</span>: <span class="tk-string">'scheduler-theatre'</span>,
+    <span class="tk-ident">template</span>: <span class="tk-string">`
+    &lt;div class="controls"&gt;
+        &lt;div class="actions"&gt;
+            &lt;button onclick="toggle"&gt;{{label}}&lt;/button&gt;
+            &lt;button onclick="clear"&gt;clear&lt;/button&gt;
+            &lt;span class="fps"&gt;&lt;span class="dot" [style.background]="dotColor"&gt;&lt;/span&gt;&lt;em&gt;{{fps}}&lt;/em&gt; fps&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;table class="stats"&gt;
+            &lt;tr&gt;&lt;th&gt;rows&lt;/th&gt;&lt;th&gt;inserts/frame&lt;/th&gt;&lt;th&gt;inserts/s&lt;/th&gt;&lt;/tr&gt;
+            &lt;tr&gt;&lt;td&gt;{{count}}&lt;/td&gt;&lt;td&gt;{{batch}}&lt;/td&gt;&lt;td&gt;{{ips}}&lt;/td&gt;&lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;div class="graphs"&gt;
+        &lt;rx-graph [config]="fpsConfig" [series]="fpsSeries"&gt;&lt;/rx-graph&gt;
+        &lt;rx-graph [config]="insertsConfig" [series]="insertsSeries"&gt;&lt;/rx-graph&gt;
+    &lt;/div&gt;
+    &lt;div class="head"&gt;
+        &lt;div&gt;#&lt;/div&gt;
+        &lt;div&gt;timestamp&lt;/div&gt;
+        &lt;div&gt;random&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="scroll"&gt;
+        &lt;div class="body" #body&gt;&lt;/div&gt;
+        &lt;div class="anchor"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+`</span>,
+    <span class="tk-ident">styles</span>: <span class="tk-string">`
+    :host { display: block; }
+    .controls { display: flex; gap: 1rem; align-items: center;
+                flex-wrap: wrap; margin-bottom: 1rem; }
+    .actions { display: flex; gap: 0.5rem; align-items: center; }
+    .fps { display: grid; grid-template-columns: 8px auto auto; gap: 0.4rem;
+           align-items: center; font-family: var(--font-mono); font-size: 0.85rem; color: var(--secondary); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .fps em { color: var(--accent); font-style: normal; min-width: 3ch; text-align: right; }
+    button { background: var(--bg-3); border: var(--border-width) solid var(--border); color: var(--white);
+             padding: 0.5rem 1rem; font: inherit; font-size: 0.85rem;
+             font-family: var(--font-mono); cursor: pointer; border-radius: var(--radius); }
+    button:hover { background: var(--bg-5); border-color: var(--accent); color: var(--accent); }
+    .stats { border-collapse: collapse; font-family: var(--font-mono); font-size: 0.8rem; }
+    .stats th { color: var(--muted); font-weight: normal; padding: 0.2rem 0.5rem;
+                text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem; }
+    .stats td { color: var(--accent); padding: 0.2rem 0.5rem;
+                border-top: var(--border-width) solid var(--bg-5); }
+    em { color: var(--accent); font-style: normal; }
+
+    .graphs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .scroll { height: 12rem; overflow-y: auto; overflow-anchor: auto;
+              display: flex; flex-direction: column-reverse;
+              background: #030303; border: var(--border-width) solid var(--bg-5); border-radius: 0 0 8px 8px;
+              scrollbar-width: thin; scrollbar-color: var(--border) var(--bg-2); }
+    .scroll::-webkit-scrollbar { width: 10px; }
+    .scroll::-webkit-scrollbar-track { background: var(--bg-2); border-radius: var(--radius-lg); }
+    .scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 5px;
+                                       border: 2px solid var(--bg-2); }
+    .scroll::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    .anchor { overflow-anchor: auto; height: 1px; }
+
+    .head { display: grid; grid-template-columns: 5ch 12ch 1fr; gap: 0 1.5rem;
+            padding: 0.65rem 1rem; background: var(--bg-2); color: var(--muted);
+            font-family: var(--font-mono); font-size: 0.7rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            border: var(--border-width) solid var(--bg-5); border-bottom: none;
+            border-radius: 8px 8px 0 0; }
+    .body { overflow-anchor: none; width: 100%; }
+    .body &gt; .row { display: grid; grid-template-columns: 5ch 12ch 1fr; gap: 0 1.5rem;
+                   padding: 0.3rem 1rem; font-family: var(--font-mono);
+                   font-size: 0.8rem; color: var(--text);
+                   border-bottom: var(--border-width) solid var(--bg-2); }
+    .body &gt; .row:nth-child(odd) { background: #080808; }
+    .body &gt; .row &gt; :first-child { color: var(--accent); }
+    .body &gt; .row &gt; :nth-child(3) { color: var(--muted); }
+`</span>,
+})
+<span class="tk-keyword">export</span> <span class="tk-keyword">class</span> <span class="tk-type">SchedulerTheatre</span> <span class="tk-keyword">extends</span> <span class="tk-type">RxElement</span> {
+    <span class="tk-decorator">@state</span> <span class="tk-ident">count</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">batch</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">ips</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">label</span> = <span class="tk-string">'flood'</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">fps</span> = <span class="tk-number">0</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">dotColor</span> = <span class="tk-string">'#555'</span>;
+    <span class="tk-decorator">@state</span> <span class="tk-ident">fpsPoints</span>: <span class="tk-ident">number</span>[] = [];
+    <span class="tk-decorator">@state</span> <span class="tk-ident">batchPoints</span>: <span class="tk-ident">number</span>[] = [];
+    <span class="tk-decorator">@state</span> <span class="tk-ident">ipsPoints</span>: <span class="tk-ident">number</span>[] = [];
+    <span class="tk-decorator">@state</span> <span class="tk-ident">fpsConfig</span> = { <span class="tk-ident">fps</span>: { <span class="tk-ident">label</span>: <span class="tk-string">'fps'</span>, <span class="tk-ident">color</span>: <span class="tk-string">'#4f4'</span> } };
+    <span class="tk-decorator">@state</span> <span class="tk-ident">insertsConfig</span> = {
+        <span class="tk-ident">batch</span>: { <span class="tk-ident">label</span>: <span class="tk-string">'inserts/frame'</span>, <span class="tk-ident">color</span>: <span class="tk-string">'#fa4'</span> },
+        <span class="tk-ident">ips</span>: { <span class="tk-ident">label</span>: <span class="tk-string">'inserts/s'</span>, <span class="tk-ident">color</span>: <span class="tk-string">'#8af'</span> },
+    };
+    <span class="tk-decorator">@state</span> <span class="tk-ident">fpsSeries</span>: <span class="tk-type">Record</span>&lt;<span class="tk-ident">string</span>, <span class="tk-type">Observable</span>&lt;<span class="tk-ident">number</span>[]&gt;&gt; = {};
+    <span class="tk-decorator">@state</span> <span class="tk-ident">insertsSeries</span>: <span class="tk-type">Record</span>&lt;<span class="tk-ident">string</span>, <span class="tk-type">Observable</span>&lt;<span class="tk-ident">number</span>[]&gt;&gt; = {};
+
+    <span class="tk-ident">body</span>!: <span class="tk-type">HTMLElement</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">fpsRaf</span> = <span class="tk-number">0</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">fpsLast</span> = <span class="tk-number">0</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">insertRaf</span> = <span class="tk-number">0</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">graphInterval</span> = <span class="tk-number">0</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">running</span> = <span class="tk-keyword">false</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">visible</span> = <span class="tk-keyword">false</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">seeded</span> = <span class="tk-keyword">false</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">current</span> = <span class="tk-const">INITIAL_BATCH</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">fpsSamples</span>: <span class="tk-ident">number</span>[] = [];
+    <span class="tk-keyword">private</span> <span class="tk-ident">ipsSamples</span>: <span class="tk-ident">number</span>[] = [];
+    <span class="tk-keyword">private</span> <span class="tk-ident">lastInsertTick</span> = <span class="tk-number">0</span>;
+    <span class="tk-keyword">private</span> <span class="tk-ident">io</span>: <span class="tk-type">IntersectionObserver</span> | <span class="tk-keyword">undefined</span>;
+
+    <span class="tk-comment">// P controller: measures fps via rAF timing, adjusts batch size</span>
+    <span class="tk-fn">fpsTick</span>(<span class="tk-ident">now</span>: <span class="tk-ident">number</span>): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">const</span> <span class="tk-ident">dt</span> = <span class="tk-ident">now</span> - <span class="tk-keyword">this</span>.<span class="tk-ident">fpsLast</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">fpsLast</span> = <span class="tk-ident">now</span>;
+        <span class="tk-keyword">if</span> (<span class="tk-ident">dt</span> &gt; <span class="tk-number">0</span>) {
+            <span class="tk-keyword">this</span>.<span class="tk-ident">fpsSamples</span>.<span class="tk-fn">push</span>(<span class="tk-ident">dt</span>);
+            <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">fpsSamples</span>.<span class="tk-ident">length</span> &gt; <span class="tk-const">FPS_WINDOW</span>) <span class="tk-keyword">this</span>.<span class="tk-ident">fpsSamples</span>.<span class="tk-fn">shift</span>();
+            <span class="tk-keyword">const</span> <span class="tk-ident">avgDt</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">fpsSamples</span>.<span class="tk-fn">reduce</span>((<span class="tk-ident">a</span>, <span class="tk-ident">b</span>) =&gt; <span class="tk-ident">a</span> + <span class="tk-ident">b</span>, <span class="tk-number">0</span>)
+                        / <span class="tk-keyword">this</span>.<span class="tk-ident">fpsSamples</span>.<span class="tk-ident">length</span>;
+            <span class="tk-keyword">this</span>.<span class="tk-ident">fps</span> = <span class="tk-type">Math</span>.<span class="tk-fn">round</span>(<span class="tk-number">1000</span> / <span class="tk-ident">avgDt</span>);
+            <span class="tk-keyword">if</span> (!<span class="tk-keyword">this</span>.<span class="tk-ident">seeded</span>) {
+                <span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints</span> = <span class="tk-keyword">new</span> <span class="tk-type">Array</span>(<span class="tk-const">GRAPH_POINTS</span>).<span class="tk-fn">fill</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">fps</span>);
+                <span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints$</span>.<span class="tk-fn">touch</span>();
+                <span class="tk-keyword">this</span>.<span class="tk-ident">seeded</span> = <span class="tk-keyword">true</span>;
+            }
+            <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">running</span>) {
+                <span class="tk-keyword">const</span> <span class="tk-ident">error</span> = (<span class="tk-keyword">this</span>.<span class="tk-ident">fps</span> - <span class="tk-const">TARGET_FPS</span>) / <span class="tk-const">TARGET_FPS</span>;
+                <span class="tk-keyword">this</span>.<span class="tk-ident">dotColor</span> = <span class="tk-ident">error</span> &lt; <span class="tk-number">0</span> ? <span class="tk-string">'#f44'</span> : <span class="tk-string">'#4f4'</span>;
+                <span class="tk-keyword">this</span>.<span class="tk-ident">current</span> = <span class="tk-type">Math</span>.<span class="tk-fn">max</span>(<span class="tk-const">MIN_BATCH</span>,
+                    <span class="tk-type">Math</span>.<span class="tk-fn">round</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">current</span> * (<span class="tk-number">1</span> + <span class="tk-const">KP</span> * <span class="tk-ident">error</span>)));
+                <span class="tk-keyword">this</span>.<span class="tk-ident">batch</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">current</span>;
+            }
+        }
+        <span class="tk-keyword">this</span>.<span class="tk-ident">fpsRaf</span> = <span class="tk-fn">requestAnimationFrame</span>((<span class="tk-ident">t</span>) =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">fpsTick</span>(<span class="tk-ident">t</span>));
+    }
+
+    <span class="tk-keyword">override</span> <span class="tk-fn">onInit</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">fpsSeries</span> = { <span class="tk-ident">fps</span>: <span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints$</span> };
+        <span class="tk-keyword">this</span>.<span class="tk-ident">insertsSeries</span> = { <span class="tk-ident">batch</span>: <span class="tk-keyword">this</span>.<span class="tk-ident">batchPoints$</span>, <span class="tk-ident">ips</span>: <span class="tk-keyword">this</span>.<span class="tk-ident">ipsPoints$</span> };
+        <span class="tk-keyword">this</span>.<span class="tk-ident">io</span> = <span class="tk-keyword">new</span> <span class="tk-type">IntersectionObserver</span>(([<span class="tk-ident">entry</span>]) =&gt; {
+            <span class="tk-keyword">if</span> (<span class="tk-ident">entry</span>!.<span class="tk-ident">isIntersecting</span>) <span class="tk-keyword">this</span>.<span class="tk-fn">onVisible</span>();
+            <span class="tk-keyword">else</span> <span class="tk-keyword">this</span>.<span class="tk-fn">onHidden</span>();
+        });
+        <span class="tk-keyword">this</span>.<span class="tk-ident">io</span>.<span class="tk-fn">observe</span>(<span class="tk-keyword">this</span>);
+    }
+
+    <span class="tk-keyword">override</span> <span class="tk-fn">onDestroy</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">io</span>?.<span class="tk-fn">disconnect</span>();
+        <span class="tk-keyword">this</span>.<span class="tk-fn">onHidden</span>();
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">onVisible</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">visible</span>) <span class="tk-keyword">return</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">visible</span> = <span class="tk-keyword">true</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">fpsLast</span> = <span class="tk-ident">performance</span>.<span class="tk-fn">now</span>();
+        <span class="tk-keyword">this</span>.<span class="tk-ident">fpsSamples</span> = [];
+        <span class="tk-keyword">this</span>.<span class="tk-ident">fpsRaf</span> = <span class="tk-fn">requestAnimationFrame</span>((<span class="tk-ident">t</span>) =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">fpsTick</span>(<span class="tk-ident">t</span>));
+        <span class="tk-keyword">this</span>.<span class="tk-ident">graphInterval</span> = <span class="tk-ident">window</span>.<span class="tk-fn">setInterval</span>(() =&gt; {
+            <span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints</span>.<span class="tk-fn">push</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">fps</span>);
+            <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints</span>.<span class="tk-ident">length</span> &gt; <span class="tk-const">GRAPH_POINTS</span>) <span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints</span>.<span class="tk-fn">shift</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">fpsPoints$</span>.<span class="tk-fn">touch</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">batchPoints</span>.<span class="tk-fn">push</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">batch</span>);
+            <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">batchPoints</span>.<span class="tk-ident">length</span> &gt; <span class="tk-const">GRAPH_POINTS</span>) <span class="tk-keyword">this</span>.<span class="tk-ident">batchPoints</span>.<span class="tk-fn">shift</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">batchPoints$</span>.<span class="tk-fn">touch</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">ipsPoints</span>.<span class="tk-fn">push</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">ips</span>);
+            <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">ipsPoints</span>.<span class="tk-ident">length</span> &gt; <span class="tk-const">GRAPH_POINTS</span>) <span class="tk-keyword">this</span>.<span class="tk-ident">ipsPoints</span>.<span class="tk-fn">shift</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">ipsPoints$</span>.<span class="tk-fn">touch</span>();
+        }, <span class="tk-const">GRAPH_SAMPLE_MS</span>);
+        <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">running</span>) {
+            <span class="tk-keyword">this</span>.<span class="tk-ident">lastInsertTick</span> = <span class="tk-ident">performance</span>.<span class="tk-fn">now</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">insertRaf</span> = <span class="tk-fn">requestAnimationFrame</span>(() =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">insertTick</span>());
+        }
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">onHidden</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">if</span> (!<span class="tk-keyword">this</span>.<span class="tk-ident">visible</span>) <span class="tk-keyword">return</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">visible</span> = <span class="tk-keyword">false</span>;
+        <span class="tk-fn">cancelAnimationFrame</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">fpsRaf</span>);
+        <span class="tk-fn">clearInterval</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">graphInterval</span>);
+        <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">running</span>) <span class="tk-fn">cancelAnimationFrame</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">insertRaf</span>);
+    }
+
+    <span class="tk-fn">toggle</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">running</span>) { <span class="tk-keyword">this</span>.<span class="tk-fn">stop</span>(); } <span class="tk-keyword">else</span> { <span class="tk-keyword">this</span>.<span class="tk-fn">start</span>(); }
+    }
+
+    <span class="tk-fn">clear</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-fn">stop</span>();
+        <span class="tk-keyword">this</span>.<span class="tk-ident">body</span>.<span class="tk-fn">replaceChildren</span>();
+        <span class="tk-keyword">this</span>.<span class="tk-ident">count</span> = <span class="tk-number">0</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">batch</span> = <span class="tk-number">0</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">ips</span> = <span class="tk-number">0</span>;
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">start</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">this</span>.<span class="tk-ident">running</span> = <span class="tk-keyword">true</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">label</span> = <span class="tk-string">'stop'</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">current</span> = <span class="tk-const">INITIAL_BATCH</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">ipsSamples</span> = [];
+        <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">visible</span>) {
+            <span class="tk-keyword">this</span>.<span class="tk-ident">lastInsertTick</span> = <span class="tk-ident">performance</span>.<span class="tk-fn">now</span>();
+            <span class="tk-keyword">this</span>.<span class="tk-ident">insertRaf</span> = <span class="tk-fn">requestAnimationFrame</span>(() =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">insertTick</span>());
+        }
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">stop</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-fn">cancelAnimationFrame</span>(<span class="tk-keyword">this</span>.<span class="tk-ident">insertRaf</span>);
+        <span class="tk-keyword">this</span>.<span class="tk-ident">running</span> = <span class="tk-keyword">false</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">label</span> = <span class="tk-string">'flood'</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">dotColor</span> = <span class="tk-string">'#555'</span>;
+    }
+
+    <span class="tk-keyword">private</span> <span class="tk-fn">insertTick</span>(): <span class="tk-keyword">void</span> {
+        <span class="tk-keyword">if</span> (!<span class="tk-keyword">this</span>.<span class="tk-ident">running</span>) <span class="tk-keyword">return</span>;
+        <span class="tk-keyword">const</span> <span class="tk-ident">now</span> = <span class="tk-ident">performance</span>.<span class="tk-fn">now</span>();
+        <span class="tk-keyword">const</span> <span class="tk-ident">dt</span> = <span class="tk-ident">now</span> - <span class="tk-keyword">this</span>.<span class="tk-ident">lastInsertTick</span>;
+        <span class="tk-keyword">this</span>.<span class="tk-ident">lastInsertTick</span> = <span class="tk-ident">now</span>;
+
+        <span class="tk-keyword">const</span> <span class="tk-ident">n</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">current</span>;
+        <span class="tk-keyword">const</span> <span class="tk-ident">base</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">count</span>;
+        <span class="tk-keyword">let</span> <span class="tk-ident">html</span> = <span class="tk-string">''</span>;
+        <span class="tk-keyword">for</span> (<span class="tk-keyword">let</span> <span class="tk-ident">i</span> = <span class="tk-number">0</span>; <span class="tk-ident">i</span> &lt; <span class="tk-ident">n</span>; <span class="tk-ident">i</span>++) {
+            <span class="tk-keyword">const</span> <span class="tk-ident">idx</span> = <span class="tk-ident">base</span> + <span class="tk-ident">i</span> + <span class="tk-number">1</span>;
+            <span class="tk-ident">html</span> += \`&lt;<span class="tk-ident">div</span> <span class="tk-keyword">class</span>=<span class="tk-string">"row"</span>&gt;&lt;<span class="tk-ident">div</span>&gt;\<span class="tk-ident">$</span>{<span class="tk-ident">idx</span>}&lt;<span class="tk-regex">/div&gt;&lt;div&gt;\${now.toFixed(1)}&lt;/</span><span class="tk-ident">div</span>&gt;&lt;<span class="tk-ident">div</span>&gt;\<span class="tk-ident">$</span>{<span class="tk-type">Math</span>.<span class="tk-fn">random</span>().<span class="tk-fn">toFixed</span>(<span class="tk-number">6</span>)}&lt;<span class="tk-regex">/div&gt;&lt;/</span><span class="tk-ident">div</span>&gt;\`;
+        }
+        <span class="tk-keyword">this</span>.<span class="tk-ident">body</span>.<span class="tk-fn">insertAdjacentHTML</span>(<span class="tk-string">'beforeend'</span>, <span class="tk-ident">html</span>);
+        <span class="tk-keyword">this</span>.<span class="tk-ident">count</span> = <span class="tk-ident">base</span> + <span class="tk-ident">n</span>;
+
+        <span class="tk-keyword">if</span> (<span class="tk-ident">dt</span> &gt; <span class="tk-number">0</span>) {
+            <span class="tk-keyword">this</span>.<span class="tk-ident">ipsSamples</span>.<span class="tk-fn">push</span>(<span class="tk-ident">n</span> <span class="tk-regex">/ (dt /</span> <span class="tk-number">1000</span>));
+            <span class="tk-keyword">if</span> (<span class="tk-keyword">this</span>.<span class="tk-ident">ipsSamples</span>.<span class="tk-ident">length</span> &gt; <span class="tk-const">IPS_WINDOW</span>) <span class="tk-keyword">this</span>.<span class="tk-ident">ipsSamples</span>.<span class="tk-fn">shift</span>();
+            <span class="tk-keyword">const</span> <span class="tk-ident">avg</span> = <span class="tk-keyword">this</span>.<span class="tk-ident">ipsSamples</span>.<span class="tk-fn">reduce</span>((<span class="tk-ident">a</span>, <span class="tk-ident">b</span>) =&gt; <span class="tk-ident">a</span> + <span class="tk-ident">b</span>, <span class="tk-number">0</span>)
+                      / <span class="tk-keyword">this</span>.<span class="tk-ident">ipsSamples</span>.<span class="tk-ident">length</span>;
+            <span class="tk-keyword">this</span>.<span class="tk-ident">ips</span> = <span class="tk-type">Math</span>.<span class="tk-fn">round</span>(<span class="tk-ident">avg</span>);
+        }
+
+        <span class="tk-keyword">this</span>.<span class="tk-ident">insertRaf</span> = <span class="tk-fn">requestAnimationFrame</span>(() =&gt; <span class="tk-keyword">this</span>.<span class="tk-fn">insertTick</span>());
+    }
+}</code></pre></code-block>
+        </section>
+
+        <section class="ex">
+            <h2>Flood</h2>
+            <p class="note">Press flood, watch the graphs.</p>
+            <div class="split">
+                <code-block syntax="html" data-rx-host="" data-ssg-id="42"><pre class="cb"><code><span class="tk-punct">&lt;</span><span class="tk-tag">scheduler-theatre</span><span class="tk-punct">&gt;</span><span class="tk-punct">&lt;/</span><span class="tk-tag">scheduler-theatre</span><span class="tk-punct">&gt;</span></code></pre></code-block>
+                <div class="live"><scheduler-theatre data-rx-host="" data-ssg-id="43">
+    <div class="controls">
+        <div class="actions">
+            <button data-rx-bind-on-click="toggle"><span data-rx-bind-text="label">flood</span></button>
+            <button data-rx-bind-on-click="clear">clear</button>
+            <span class="fps"><span class="dot" data-rx-bind-style-background="dotColor" style="background: rgb(85, 85, 85);"></span><em><span data-rx-bind-text="fps">0</span></em> fps</span>
+        </div>
+        <table class="stats">
+            <tbody><tr><th>rows</th><th>inserts/frame</th><th>inserts/s</th></tr>
+            <tr><td><span data-rx-bind-text="count">0</span></td><td><span data-rx-bind-text="batch">0</span></td><td><span data-rx-bind-text="ips">0</span></td></tr>
+        </tbody></table>
+    </div>
+    <div class="graphs">
+        <rx-graph data-rx-bind-prop-config="fpsConfig" data-rx-bind-prop-series="fpsSeries" data-rx-host="" data-ssg-id="44">
+    <div class="legend" rx-for="{ label, color } of legendItems by label">
+        <span data-rx-item="" data-rx-key="fps"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(68, 255, 68);"></span><span data-rx-bind-text="label">fps</span></span>
+    </div>
+    <canvas data-rx-bind-ref-canvas="canvas" width="132" height="94"></canvas>
+</rx-graph>
+        <rx-graph data-rx-bind-prop-config="insertsConfig" data-rx-bind-prop-series="insertsSeries" data-rx-host="" data-ssg-id="45">
+    <div class="legend" rx-for="{ label, color } of legendItems by label">
+        <span data-rx-item="" data-rx-key="inserts/frame"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(255, 170, 68);"></span><span data-rx-bind-text="label">inserts/frame</span></span>
+    
+        <span data-rx-item="" data-rx-key="inserts/s"><span class="dot" data-rx-bind-style-background="color" style="background: rgb(136, 170, 255);"></span><span data-rx-bind-text="label">inserts/s</span></span>
+    </div>
+    <canvas data-rx-bind-ref-canvas="canvas" width="132" height="94"></canvas>
+</rx-graph>
+    </div>
+    <div class="head">
+        <div>#</div>
+        <div>timestamp</div>
+        <div>random</div>
+    </div>
+    <div class="scroll">
+        <div class="body" data-rx-bind-ref-body="body"></div>
+        <div class="anchor"></div>
+    </div>
+</scheduler-theatre></div>
+            </div>
+        </section>
+    </scheduler-theatre-section>
+        </main>
+    </examples-page></rx-router-outlet>
+    </app-root></body></html>
