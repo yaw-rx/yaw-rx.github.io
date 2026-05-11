@@ -1,0 +1,1 @@
+import{E as t}from"./rx-element-D2_hkJVr.js";const e=()=>{const e=document.getElementById("yaw-ssg-state");null!==e&&t(JSON.parse(e.textContent))},o=()=>{for(const t of document.querySelectorAll("[data-ssg-id]"))t.removeAttribute("data-ssg-id")};export{e as loadHydrationState,o as stripSsgAttributes};
